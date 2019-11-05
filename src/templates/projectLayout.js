@@ -30,7 +30,7 @@ const calc = (x, y) => [
 const trans = (x, y, s) =>
   `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 
-function projectLayout({ data, pageContext }) {
+function ProjectLayout({ data, pageContext }) {
   const { next, prev } = pageContext
   const projectData = data.contentfulProjects
 
@@ -110,7 +110,7 @@ function projectLayout({ data, pageContext }) {
   )
 }
 
-export default projectLayout
+export default ProjectLayout
 
 export const query = graphql`
   query($slug: String!) {
