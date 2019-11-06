@@ -54,6 +54,7 @@ function Hero({ handleScroll }) {
           deployment.
         </Text>
         <PrimaryButton onClick={handleScroll}>Recent Works</PrimaryButton>
+        <button onClick={methodDoesNotExist}>Break the world</button>
       </Content>
     </Wrapper>
   )
