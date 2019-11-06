@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./layouts/header"
 import Footer from "./layouts/footer"
+import ErrorBoundries from './errorBoundries';
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -18,11 +19,11 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <ErrorBoundries>
       <Header siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
       <Footer />
-    </>
+    </ErrorBoundries>
   )
 }
 
