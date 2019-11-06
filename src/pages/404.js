@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 //assets
-import { white } from "../utils"
+import { black } from "../utils"
 
 const NotFoundPage = () => (
   <Layout>
@@ -33,6 +33,6 @@ const Wrapper = styled.section`
   justify-items: center;
   align-items: center;
   h1 {
-    color: ${white};
+    color: ${black};
   }
 `
