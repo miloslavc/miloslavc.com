@@ -86,8 +86,12 @@ function ProjectLayout({ data, pageContext }) {
             </li>
           </Details>
           <ExternalNav>
-            <SecondaryButton href={projectData.live}>live</SecondaryButton>
-            <SecondaryButton href={projectData.git}>git</SecondaryButton>
+            <SecondaryButton href={projectData.live} target="_blank">
+              live
+            </SecondaryButton>
+            <SecondaryButton href={projectData.gitHub} target="_blank">
+              git
+            </SecondaryButton>
           </ExternalNav>
         </ProjectWrapper>
         <ProjectGallery>

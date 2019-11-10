@@ -148,7 +148,7 @@ const ContentText = styled.div`
 
     &--hover {
       &:hover {
-        color: ${primary}
+        color: ${primary};
       }
     }
   }
