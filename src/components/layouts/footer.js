@@ -55,7 +55,7 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Designed and Coded by Miloslav Cvetkovic
+            Designed and Developed by Miloslav Cvetkovic
           </FooterIcon>
         </P>
       </Content>
