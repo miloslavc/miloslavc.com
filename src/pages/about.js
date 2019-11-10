@@ -153,3 +153,4 @@ const ContentText = styled.div`
     }
   }
 `
+const Experience = styled.div``
