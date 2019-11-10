@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 //assets
-import { P, Text, H4, TextPar, Span, PrimaryButtonNav } from "../assets"
+import { P, H4, TextPar, Span, PrimaryButtonNav } from "../assets"
 import { primary, mq, black, gray } from "../utils"
 
 function About() {
@@ -150,6 +150,6 @@ const ContentText = styled.div`
       &:hover {
         color: ${primary}
       }
+    }
+  }
 `
-
-const Experience = styled.div``
