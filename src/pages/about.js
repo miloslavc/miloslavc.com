@@ -6,8 +6,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 //assets
-import { H4, TextPar, Span, PrimaryButtonNav } from "../assets"
-import { primary, mq, black } from "../utils"
+import { P, Text, H4, TextPar, Span, PrimaryButtonNav } from "../assets"
+import { primary, mq, black, gray } from "../utils"
 
 function About() {
   const data = useStaticQuery(graphql`
@@ -28,6 +28,7 @@ function About() {
             duration
             role
             id
+            name
           }
         }
       }
@@ -63,7 +64,7 @@ function About() {
                 href={aboutData.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="nav primary"
+                className="btn--hover"
               >
                 skills
               </PrimaryButtonNav>
@@ -72,7 +73,7 @@ function About() {
                 href={`mailto:${aboutData.email}`}
                 target="_self"
                 rel="noopener noreferrer"
-                className="nav primary"
+                className="btn"
               >
                 let's talk
               </PrimaryButtonNav>
@@ -81,10 +82,10 @@ function About() {
           <Experience>
             <H4>Experience</H4>
             {data.allContentfulExperience.edges.map(({ node }) => (
-              <TextPar
-                key={node.id}
-                color={black}
-              >{`${node.duration} | ${node.role}`}</TextPar>
+              <div key={node.id}>
+                <P color={black}>{`${node.duration} | ${node.role}`}</P>
+                <P color={gray}>{`${node.name}`}</P>
+              </div>
             ))}
           </Experience>
         </Content>
@@ -96,7 +97,7 @@ function About() {
 export default About
 
 const Wrapper = styled.section`
-  max-width: 90%;
+  max-width: 70em;
   min-height: 90vh;
   margin: 0 auto;
   display: grid;
@@ -129,7 +130,6 @@ const Content = styled.div`
 `
 
 const Heading = styled.div`
-  align-self: end;
   width: 100%;
   padding-top: 4rem;
   ${mq[0]} {
@@ -143,9 +143,13 @@ const Heading = styled.div`
 `
 
 const ContentText = styled.div`
-  .nav {
+  .btn {
     margin-left: 0.2em;
-  }
+
+    &--hover {
+      &:hover {
+        color: ${primary}
+      }
 `
 
 const Experience = styled.div``
