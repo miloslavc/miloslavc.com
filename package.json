@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "gatsby-plugin-sentry": "^1.0.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.19.1"
   },
   "keywords": [
     "gatsby"
