@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
+import { isMobile } from "react-device-detect";
 
 //dependencies
 import styled from "@emotion/styled"
@@ -56,7 +57,7 @@ const Featured = React.forwardRef((props, ref) => {
               <Image scale={dataId === node.id ? 1.03 : 1}>
                 <Img fluid={node.image.fluid} />
               </Image>
-              <CardTitle opacity={dataId === node.id ? 1 : 0}>
+              <CardTitle opacity={isMobile ? 1 : (dataId === node.id ? 1 : 0)}>
                 <H2>{node.title}</H2>
                 <Text>{node.work}</Text>
               </CardTitle>

@@ -105,7 +105,7 @@ const Wrapper = styled.section`
   align-items: center;
   grid-gap: 3em;
   grid-template-rows: 1fr auto;
-  padding: 6rem 0 2rem;
+  padding: 2rem;
 
   ${mq[2]} {
     grid-gap: 6rem;
