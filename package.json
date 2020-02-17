@@ -10,7 +10,7 @@
     "@sentry/browser": "^5.12.1",
     "dotenv": "^8.0.0",
     "gatsby": "^2.19.12",
-    "gatsby-image": "^2.2.40",
+    "gatsby-image": "^2.2.41",
     "gatsby-plugin-google-analytics": "^2.1.35",
     "gatsby-plugin-manifest": "^2.2.41",
     "gatsby-plugin-offline": "^3.0.34",
