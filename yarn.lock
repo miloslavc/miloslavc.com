@@ -5711,7 +5711,7 @@ gatsby-plugin-sentry@^1.0.1:
   dependencies:
     "@sentry/browser" latest
 
-gatsby-plugin-sharp@^2.4.5, gatsby-plugin-sharp@^2.4.7:
+gatsby-plugin-sharp@^2.4.7:
   version "2.4.7"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.4.7.tgz#68c8aadd70aabbebda75bef5c4f89956ed21ab64"
   integrity sha512-xXXr4bPRpssSYwE1y5BMDgO/OEt40nZjQxdSZ12gTrLiFRjGr0H71K65Y+YxJBZCof0OHU04Y0wxEUe7VdNrHA==
@@ -5745,10 +5745,10 @@ gatsby-react-router-scroll@^2.1.23:
     scroll-behavior "^0.9.10"
     warning "^3.0.0"
 
-gatsby-source-contentful@^2.1.89:
-  version "2.1.89"
-  resolved "https://registry.yarnpkg.com/gatsby-source-contentful/-/gatsby-source-contentful-2.1.89.tgz#f1d9990eb6180617207e0b1781c2f4731868c3d4"
-  integrity sha512-RU3lhkMyEn4KrbKkUJi3IC9E/XNfodFt8cJW28WEWpkOipeid2Sn6zFJpH94VkLql8/lYn0iWmFi5PTvAOzHmQ==
+gatsby-source-contentful@^2.1.91:
+  version "2.1.91"
+  resolved "https://registry.yarnpkg.com/gatsby-source-contentful/-/gatsby-source-contentful-2.1.91.tgz#5788d89100450f005644cc6df7be72c7bf5798ea"
+  integrity sha512-BgwcBDVKyi75GKv/TgFwwUSEWtzZqZR72fiaYo891kO5kf4Jn8Hblkrm7Ki/3BHzzS+6b+gJjHU9bldKrePeEw==
   dependencies:
     "@babel/runtime" "^7.7.6"
     "@contentful/rich-text-types" "^13.1.0"
@@ -5760,15 +5760,15 @@ gatsby-source-contentful@^2.1.89:
     contentful "^7.14.0"
     deep-map "^1.5.0"
     fs-extra "^8.1.0"
-    gatsby-core-utils "^1.0.28"
-    gatsby-plugin-sharp "^2.4.5"
-    gatsby-source-filesystem "^2.1.48"
+    gatsby-core-utils "^1.0.30"
+    gatsby-plugin-sharp "^2.4.7"
+    gatsby-source-filesystem "^2.1.50"
     is-online "^8.2.1"
     json-stringify-safe "^5.0.1"
     lodash "^4.17.15"
     qs "^6.9.1"
 
-gatsby-source-filesystem@^2.1.48, gatsby-source-filesystem@^2.1.50:
+gatsby-source-filesystem@^2.1.50:
   version "2.1.50"
   resolved "https://registry.yarnpkg.com/gatsby-source-filesystem/-/gatsby-source-filesystem-2.1.50.tgz#cce82defe88bb280e5d206caac26fc6b880c1cd9"
   integrity sha512-BSjxTFT3srIhRxlD4sPeJ+p6xtBzqeJ4zMyyzjVgsAkRcnWFzpyGVnH9eBWnYuhPIz1I9bXvKtQZYsIYcYUYCw==
