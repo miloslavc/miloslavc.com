@@ -1,7 +1,7 @@
-const dotenv = require("dotenv")
+const dotenv = require('dotenv');
 
-if (process.env.NODE_ENV !== "production") {
-  dotenv.config()
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
 }
 
 module.exports = {
@@ -37,7 +37,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // replace "UA-XXXXXXXXX-X" with your own Tracking ID
-        trackingId: "UA-140802156-1",
+        trackingId: 'UA-140802156-1',
       },
     },
     {
@@ -48,19 +48,20 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-sentry",
+      resolve: 'gatsby-plugin-sentry',
       options: {
         dsn: process.env.SENTRY_ACCESS_TOKEN,
         // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
         environment: process.env.NODE_ENV,
-        enabled: (() => ["production", "stage"].indexOf(process.env.NODE_ENV) !== -1)(),
+        enabled: (() =>
+          ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
         config: {
           // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
-        }
-      }
-    }
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

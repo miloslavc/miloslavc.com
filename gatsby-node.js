@@ -1,8 +1,8 @@
-const path = require(`path`)
+const path = require(`path`);
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
-  const projectTemplate = path.resolve(`./src/templates/projectLayout.js`)
+  const { createPage } = actions;
+  const projectTemplate = path.resolve(`./src/templates/projectLayout.js`);
   return graphql(`
     {
       allContentfulProjects(sort: { fields: title, order: ASC }) {
@@ -15,9 +15,9 @@ exports.createPages = ({ graphql, actions }) => {
     }
   `).then(result => {
     if (result.error) {
-      throw result.error
+      throw result.error;
     }
-    const projects = result.data.allContentfulProjects.edges
+    const projects = result.data.allContentfulProjects.edges;
     projects.forEach((edge, index) => {
       createPage({
         path: `/projects/${edge.node.slug}`,
@@ -30,7 +30,7 @@ exports.createPages = ({ graphql, actions }) => {
               ? null
               : projects[index + 1].node.slug,
         },
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};

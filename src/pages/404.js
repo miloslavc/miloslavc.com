@@ -1,19 +1,19 @@
-import React from "react"
-import styled from "@emotion/styled"
+import React from 'react';
+import styled from '@emotion/styled';
 
-//components
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+// components
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
-//assets
-import { black } from "../utils"
+// assets
+import { black } from '../utils';
 
 const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Not found" />
     <Wrapper>
       <h1>
-        Ooops! You just hit a route that doesn&#39;t exist...{" "}
+        Ooops! You just hit a route that doesn&#39;t exist...{' '}
         <span role="img" aria-label="Face">
           🙄
         </span>
@@ -21,9 +21,9 @@ const NotFoundPage = () => (
       </h1>
     </Wrapper>
   </Layout>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;
 
 const Wrapper = styled.section`
   max-width: 90%;
@@ -35,4 +35,4 @@ const Wrapper = styled.section`
   h1 {
     color: ${black};
   }
-`
+`;

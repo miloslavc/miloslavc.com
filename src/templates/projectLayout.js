@@ -1,12 +1,12 @@
-import React from "react"
-import styled from "@emotion/styled"
-import Img from "gatsby-image"
+import React from 'react';
+import styled from '@emotion/styled';
+import Img from 'gatsby-image';
 
-//dependencies
-import { graphql, Link } from "gatsby"
-import { useSpring, animated } from "react-spring"
+// dependencies
+import { graphql, Link } from 'gatsby';
+import { useSpring, animated } from 'react-spring';
 
-//assets
+// assets
 import {
   P,
   H2,
@@ -14,31 +14,31 @@ import {
   PrimaryButtonInt,
   TextPar,
   SecondaryButton,
-} from "../assets"
-import { mq, mqx, gray, black } from "../utils"
+} from '../assets';
+import { mq, mqx, gray, black } from '../utils';
 
-//gatsby assets
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+// gatsby assets
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
-//animation
+// animation
 const calc = (x, y) => [
   -(y - window.innerHeight / 2) / 600,
   (x - window.innerWidth / 2) / 600,
   1,
-]
+];
 const trans = (x, y, s) =>
-  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
+  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 function ProjectLayout({ data, pageContext }) {
-  const { next, prev } = pageContext
-  const projectData = data.contentfulProjects
+  const { next, prev } = pageContext;
+  const projectData = data.contentfulProjects;
 
-  //animation
+  // animation
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
     config: { mass: 5, tension: 350, friction: 40 },
-  }))
+  }));
 
   return (
     <Layout>
@@ -52,6 +52,7 @@ function ProjectLayout({ data, pageContext }) {
                 set({ xys: calc(x, y) })
               }
               onMouseLeave={() => set({ xys: [0, 0, 1] })}
+              // eslint-disable-next-line react/destructuring-assignment
               style={{ transform: props.xys.interpolate(trans) }}
             >
               <ImageWrapper>
@@ -101,20 +102,20 @@ function ProjectLayout({ data, pageContext }) {
             ))}
         </ProjectGallery>
         <Nav>
-          <Link className={prev ? "active" : "hidden"} to={`/projects/${prev}`}>
+          <Link className={prev ? 'active' : 'hidden'} to={`/projects/${prev}`}>
             <PrimaryButtonInt>Previous Project</PrimaryButtonInt>
           </Link>
 
-          <Link className={next ? "active" : "hidden"} to={`/projects/${next}`}>
+          <Link className={next ? 'active' : 'hidden'} to={`/projects/${next}`}>
             <PrimaryButtonInt>Next Project</PrimaryButtonInt>
           </Link>
         </Nav>
       </Wrapper>
     </Layout>
-  )
+  );
 }
 
-export default ProjectLayout
+export default ProjectLayout;
 
 export const query = graphql`
   query($slug: String!) {
@@ -147,14 +148,14 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
 const Wrapper = styled.section`
   display: grid;
   align-items: center;
   grid-gap: 1em;
   grid-auto-rows: auto;
-`
+`;
 
 const ProjectWrapper = styled.article`
   padding: 0 2rem 2rem;
@@ -169,7 +170,7 @@ const ProjectWrapper = styled.article`
   ${mq[1]} {
     padding: 3rem 2rem 2rem;
   }
-`
+`;
 
 const Details = styled.ul`
   grid-column: 1/-1;
@@ -193,7 +194,7 @@ const Details = styled.ul`
       grid-column: 1/-1;
     }
   }
-`
+`;
 
 const ProjectGallery = styled.article`
   text-align: center;
@@ -207,7 +208,7 @@ const ProjectGallery = styled.article`
     padding: 0 5rem 2rem;
     grid-gap: 2rem;
   }
-`
+`;
 
 const Nav = styled.div`
   display: grid;
@@ -219,7 +220,7 @@ const Nav = styled.div`
     pointer-events: none;
     visibility: hidden;
   }
-`
+`;
 const Parallax = styled.div`
   margin-top: 5vh;
   max-height: 65vmin;
@@ -230,7 +231,7 @@ const Parallax = styled.div`
   ${mq[1]} {
     max-height: 75vmin;
   }
-`
+`;
 
 const ImageWrapper = styled.div`
   margin-top: 5vh;
@@ -238,7 +239,7 @@ const ImageWrapper = styled.div`
   position: relative;
   left: 50%;
   transform: translate(-50%, -23%);
-`
+`;
 
 const ExternalNav = styled.div`
   display: grid;
@@ -248,4 +249,4 @@ const ExternalNav = styled.div`
   a:last-of-type {
     align-items: start;
   }
-`
+`;

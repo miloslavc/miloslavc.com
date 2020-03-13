@@ -1,13 +1,13 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import styled from "@emotion/styled"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import styled from '@emotion/styled';
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
-//assets
-import { P, H4, TextPar, Span, PrimaryButtonNav } from "../assets"
-import { primary, mq, black, gray } from "../utils"
+// assets
+import { P, H4, TextPar, Span, PrimaryButtonNav } from '../assets';
+import { primary, mq, black, gray } from '../utils';
 
 function About() {
   const data = useStaticQuery(graphql`
@@ -33,11 +33,9 @@ function About() {
         }
       }
     }
-  `)
+  `);
 
-  const experienceData = data.allContentfulExperience.edges
-  const aboutData = data.contentfulAbout
-  console.log(experienceData)
+  const aboutData = data.contentfulAbout;
   return (
     <Layout>
       <SEO title="About me" />
@@ -57,7 +55,7 @@ function About() {
         <Content>
           <ContentText>
             <TextPar color={black}>{aboutData.desc.desc}</TextPar>
-            <br></br>
+            <br />
             <TextPar color={black}>
               If you have a project in mind and you are in need of my
               <PrimaryButtonNav
@@ -75,7 +73,7 @@ function About() {
                 rel="noopener noreferrer"
                 className="btn"
               >
-                let's talk
+                let&apos;s talk
               </PrimaryButtonNav>
             </TextPar>
           </ContentText>
@@ -91,10 +89,10 @@ function About() {
         </Content>
       </Wrapper>
     </Layout>
-  )
+  );
 }
 
-export default About
+export default About;
 
 const Wrapper = styled.section`
   max-width: 70em;
@@ -110,7 +108,7 @@ const Wrapper = styled.section`
   ${mq[2]} {
     grid-gap: 6rem;
   }
-`
+`;
 
 const Content = styled.div`
   height: 100%;
@@ -127,7 +125,7 @@ const Content = styled.div`
   ${mq[2]} {
     grid-gap: 8em;
   }
-`
+`;
 
 const Heading = styled.div`
   width: 100%;
@@ -140,7 +138,7 @@ const Heading = styled.div`
     font-size: 2.5em;
     color: ${black};
   }
-`
+`;
 
 const ContentText = styled.div`
   .btn {
@@ -152,5 +150,5 @@ const ContentText = styled.div`
       }
     }
   }
-`
-const Experience = styled.div``
+`;
+const Experience = styled.div``;

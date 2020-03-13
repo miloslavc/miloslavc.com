@@ -1,13 +1,13 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
-//dependencies
-import styled from "@emotion/styled"
-import Img from "gatsby-image"
+// dependencies
+import styled from '@emotion/styled';
+import Img from 'gatsby-image';
 
-//assets
-import { H2, Text } from "../assets"
-import { primary, gray } from "../utils"
+// assets
+import { H2, Text } from '../assets';
+import { primary, gray } from '../utils';
 
 function Testimonial() {
   const data = useStaticQuery(graphql`
@@ -29,9 +29,9 @@ function Testimonial() {
         }
       }
     }
-  `)
+  `);
 
-  const content = data.allContentfulTestimonial.edges
+  const content = data.allContentfulTestimonial.edges;
   return (
     <Wrapper>
       {content.map(({ node }) => (
@@ -46,13 +46,13 @@ function Testimonial() {
         </Content>
       ))}
       {content.map(({ node }) => (
-        <Dot key={node.name}></Dot>
+        <Dot key={node.name} />
       ))}
     </Wrapper>
-  )
+  );
 }
 
-export default Testimonial
+export default Testimonial;
 
 const Wrapper = styled.section`
   min-height: 50vh;
@@ -62,14 +62,14 @@ const Wrapper = styled.section`
   /* grid-template-rows: 1fr auto; */
   grid-gap: 2rem;
   padding: 0 2rem;
-`
+`;
 
 const Content = styled.div`
   max-width: 40em;
   margin: 0 auto;
   align-self: end;
   text-align: center;
-`
+`;
 const Image = styled.div`
   width: 3.5em;
   height: 3.5em;
@@ -81,7 +81,7 @@ const Image = styled.div`
     width: 100%;
     height: 100%;
   }
-`
+`;
 const InnerWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -89,7 +89,7 @@ const InnerWrapper = styled.div`
   h2 {
     margin: 0;
   }
-`
+`;
 
 const Dot = styled.span`
   height: 0.6rem;
@@ -97,4 +97,4 @@ const Dot = styled.span`
   border-radius: 50%;
   background: ${primary};
   align-self: start;
-`
+`;

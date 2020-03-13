@@ -1,37 +1,37 @@
-import React, { useState } from "react"
+import React, { useState } from 'react';
 
-//dependencies
-import styled from "@emotion/styled"
-import { useTrail, animated } from "react-spring"
+// dependencies
+import styled from '@emotion/styled';
+import { useTrail, animated } from 'react-spring';
 
-//assets
-import { H4, Text, HeroHeading, PrimaryButton } from "../assets"
-import { primary, mq } from "../utils"
+// assets
+import { H4, Text, HeroHeading, PrimaryButton } from '../assets';
+import { primary, mq } from '../utils';
 
 const items = [
-  "Hi there 👋— ",
-  "my name is ",
-  "Miloslav.",
+  'Hi there 👋— ',
+  'my name is ',
+  'Miloslav.',
   " I'm a",
-  "frontend",
-  "developer",
-  "and designer",
-  "currently based",
-  "in Berlin.",
-]
-const config = { mass: 5, tension: 2000, friction: 200 }
+  'frontend',
+  'developer',
+  'and designer',
+  'currently based',
+  'in Berlin.',
+];
+const config = { mass: 5, tension: 2000, friction: 200 };
 
 function Hero({ handleScroll }) {
-  const [toggle, set] = useState(true)
+  const [toggle, set] = useState(true);
 
-  //animation settings
+  // animation settings
   const trail = useTrail(items.length, {
     config,
     opacity: toggle ? 1 : 0,
     x: toggle ? 0 : 20,
     height: toggle ? 80 : 0,
     from: { opacity: 0, x: 20, height: 0 },
-  })
+  });
 
   return (
     <Wrapper>
@@ -43,7 +43,7 @@ function Hero({ handleScroll }) {
             className="trails-text"
             style={{
               ...rest,
-              transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+              transform: x.interpolate(value => `translate3d(0,${value}px,0)`),
             }}
           >
             <HeroHeading>{items[index]}</HeroHeading>
@@ -56,10 +56,10 @@ function Hero({ handleScroll }) {
         <PrimaryButton onClick={handleScroll}>Recent Works</PrimaryButton>
       </Content>
     </Wrapper>
-  )
+  );
 }
 
-export default Hero
+export default Hero;
 
 const Wrapper = styled.section`
   max-width: 70em;
@@ -80,7 +80,7 @@ const Wrapper = styled.section`
       }
     }
   }
-`
+`;
 
 const Content = styled.div`
   width: 100%;
@@ -91,4 +91,4 @@ const Content = styled.div`
   p {
     margin-top: 2rem;
   }
-`
+`;

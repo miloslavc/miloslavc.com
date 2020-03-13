@@ -1,12 +1,12 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
-//dependencies
-import styled from "@emotion/styled"
+// dependencies
+import styled from '@emotion/styled';
 
-//assets
-import { H4, H1, HeroHeading, Text, Key } from "../assets"
-import { primary, mq } from "../utils"
+// assets
+import { H4, H1, HeroHeading, Text, Key } from '../assets';
+import { primary, mq } from '../utils';
 
 function Process() {
   const data = useStaticQuery(graphql`
@@ -24,14 +24,14 @@ function Process() {
         }
       }
     }
-  `)
+  `);
 
   return (
     <Wrapper>
       <H4>How I Work</H4>
       <HeroHeading>Development Process</HeroHeading>
       <Text>
-        Reach your business goals with excellent experience. <br></br>
+        Reach your business goals with excellent experience. <br />
         Let’s start working on your awesome project.
       </Text>
       <ContentWrapper>
@@ -49,10 +49,10 @@ function Process() {
         ))}
       </ContentWrapper>
     </Wrapper>
-  )
+  );
 }
 
-export default Process
+export default Process;
 
 const Wrapper = styled.section`
   min-height: 92vh;
@@ -62,7 +62,7 @@ const Wrapper = styled.section`
   display: grid;
   grid-template-rows: auto auto auto 1fr;
   align-items: center;
-`
+`;
 const ContentWrapper = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
@@ -77,4 +77,4 @@ const ContentWrapper = styled.ul`
     grid-template-columns: 1fr 1fr;
     grid-gap: 4rem 5rem;
   }
-`
+`;

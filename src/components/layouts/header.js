@@ -1,13 +1,13 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
-import styled from "@emotion/styled"
+import { Link } from 'gatsby';
+// import PropTypes from 'prop-types';
+import React from 'react';
+import styled from '@emotion/styled';
 
-//assets
-import { FaGithub, FaLinkedinIn, FaDribbble } from "react-icons/fa"
-import { primary, white, black, mq } from "../../utils"
+// assets
+import { FaGithub, FaLinkedinIn, FaDribbble } from 'react-icons/fa';
+import { primary, white, black, mq } from '../../utils';
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <HeaderStyled>
     <nav>
       <Link className="logo" to="/">
@@ -19,7 +19,7 @@ const Header = ({ siteTitle }) => (
         href="https://dribbble.com/miloslavc"
         rel="noopener noreferrer"
       >
-        <FaDribbble></FaDribbble>
+        <FaDribbble />
       </a>
       <a
         className="icons"
@@ -27,7 +27,7 @@ const Header = ({ siteTitle }) => (
         href="https://github.com/miloslavc"
         rel="noopener noreferrer"
       >
-        <FaGithub></FaGithub>
+        <FaGithub />
       </a>
       <a
         className="LinkedIn icons"
@@ -35,7 +35,7 @@ const Header = ({ siteTitle }) => (
         href="https://www.linkedin.com/in/miloslavc/"
         rel="noopener noreferrer"
       >
-        <FaLinkedinIn></FaLinkedinIn>
+        <FaLinkedinIn />
       </a>
       <span className="icons"> - </span>
       <Link to="/about">About</Link>
@@ -45,21 +45,21 @@ const Header = ({ siteTitle }) => (
         href="mailto:miloslavc90@gmail.com"
         rel="noopener noreferrer"
       >
-        Let's Talk
+        Let&apos;s Talk
       </a>
     </nav>
   </HeaderStyled>
-)
+);
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
+// Header.propTypes = {
+//   siteTitle: PropTypes.string,
+// };
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
+// Header.defaultProps = {
+//   siteTitle: ``,
+// };
 
-export default Header
+export default Header;
 
 const HeaderStyled = styled.header`
   position: fixed;
@@ -128,4 +128,4 @@ const HeaderStyled = styled.header`
       }
     }
   }
-`
+`;

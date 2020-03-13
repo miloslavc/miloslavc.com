@@ -1,10 +1,10 @@
-import React from "react"
-import styled from "@emotion/styled"
+import React from 'react';
+import styled from '@emotion/styled';
 
-//assets
-import { white, black, gray, primary } from "../../utils"
-import { FaGithub, FaLinkedinIn, FaDribbble } from "react-icons/fa"
-import { FooterIcon, H4, Text, HeroHeading, P } from "../../assets"
+// assets
+import { FaGithub, FaLinkedinIn, FaDribbble } from 'react-icons/fa';
+import { white, black, gray, primary } from '../../utils';
+import { FooterIcon, H4, Text, HeroHeading, P } from '../../assets';
 
 function Footer() {
   return (
@@ -30,14 +30,14 @@ function Footer() {
             href="https://dribbble.com/miloslavc"
             rel="noopener noreferrer"
           >
-            <FaDribbble></FaDribbble>
+            <FaDribbble />
           </FooterIcon>
           <FooterIcon
             target="_blank"
             href="https://github.com/miloslavc"
             rel="noopener noreferrer"
           >
-            <FaGithub></FaGithub>
+            <FaGithub />
           </FooterIcon>
           <FooterIcon
             className="LinkedIn"
@@ -45,11 +45,11 @@ function Footer() {
             href="https://www.linkedin.com/in/miloslavc/"
             rel="noopener noreferrer"
           >
-            <FaLinkedinIn></FaLinkedinIn>
+            <FaLinkedinIn />
           </FooterIcon>
         </nav>
         <P className="copy">
-          © {new Date().getFullYear()}, All rights reserved. -{" "}
+          © {new Date().getFullYear()}, All rights reserved. -{' '}
           <FooterIcon
             href="http://miloslav.com"
             target="_blank"
@@ -60,16 +60,16 @@ function Footer() {
         </P>
       </Content>
     </Wrapper>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
 
 const Wrapper = styled.footer`
   min-height: 5vh;
   padding: 2rem;
   background: ${black};
-`
+`;
 
 const Content = styled.div`
   display: grid;
@@ -108,4 +108,4 @@ const Content = styled.div`
       transform: scale(1.05);
     }
   }
-`
+`;

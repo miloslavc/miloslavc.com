@@ -1,18 +1,19 @@
-import React, { useState } from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import { isMobile } from "react-device-detect";
+import React, { useState } from 'react';
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import { isMobile } from 'react-device-detect';
 
-//dependencies
-import styled from "@emotion/styled"
-import Img from "gatsby-image"
+// dependencies
+import styled from '@emotion/styled';
+import Img from 'gatsby-image';
 
-//assets
-import { H4, H2, Text } from "../assets"
-import { mq } from "../utils"
+// assets
+import { H4, H2, Text } from '../assets';
+import { mq } from '../utils';
 
+// eslint-disable-next-line react/display-name
 const Featured = React.forwardRef((props, ref) => {
-  const [showData, setShowData] = useState(false)
-  const [dataId, setDataId] = useState(null)
+  const [showData, setShowData] = useState(false);
+  const [dataId, setDataId] = useState(null);
   const data = useStaticQuery(graphql`
     query MyQuery {
       allContentfulProjects {
@@ -32,18 +33,18 @@ const Featured = React.forwardRef((props, ref) => {
         }
       }
     }
-  `)
+  `);
 
   const handleEnter = id => {
-    setShowData(!showData)
-    setDataId(id)
-  }
+    setShowData(!showData);
+    setDataId(id);
+  };
   const handleLeave = () => {
-    setShowData(false)
-    setDataId(null)
-  }
+    setShowData(false);
+    setDataId(null);
+  };
 
-  const featuredProjects = data.allContentfulProjects.edges
+  const featuredProjects = data.allContentfulProjects.edges;
   return (
     <Wrapper ref={ref}>
       <H4>Recent Works</H4>
@@ -57,7 +58,7 @@ const Featured = React.forwardRef((props, ref) => {
               <Image scale={dataId === node.id ? 1.03 : 1}>
                 <Img fluid={node.image.fluid} />
               </Image>
-              <CardTitle opacity={isMobile ? 1 : (dataId === node.id ? 1 : 0)}>
+              <CardTitle opacity={isMobile || dataId === node.id ? 1 : 0}>
                 <H2>{node.title}</H2>
                 <Text>{node.work}</Text>
               </CardTitle>
@@ -66,10 +67,10 @@ const Featured = React.forwardRef((props, ref) => {
         ))}
       </CardWrapper>
     </Wrapper>
-  )
-})
+  );
+});
 
-export default Featured
+export default Featured;
 
 const Wrapper = styled.section`
   min-height: 100vh;
@@ -92,7 +93,7 @@ const Wrapper = styled.section`
       }
     }
   }
-`
+`;
 const CardWrapper = styled.div`
   width: 100%;
   display: grid;
@@ -104,14 +105,14 @@ const CardWrapper = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-gap: 5rem;
   }
-`
+`;
 
 const Card = styled.article`
   width: 100%;
   display: grid;
   grid-auto-rows: auto auto;
   grid-gap: 1rem;
-`
+`;
 
 const CardTitle = styled.div`
   p {
@@ -119,8 +120,8 @@ const CardTitle = styled.div`
     transition: all 0.2s ease-in;
     margin-bottom: 0;
   }
-`
+`;
 const Image = styled.div`
   transition: all 0.2s ease-in;
   transform: scale(${({ scale }) => scale});
-`
+`;

@@ -1,6 +1,6 @@
-import styled from "@emotion/styled"
-import { css } from "@emotion/core"
-import { black, primary, white } from "../utils"
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
+import { black, primary, white } from '../utils';
 
 const button = css`
   color: ${black};
@@ -10,7 +10,7 @@ const button = css`
   padding: 0.1em;
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
@@ -28,7 +28,7 @@ const button = css`
       height: 100%;
     }
   }
-`
+`;
 
 export const SecondaryButton = styled.a`
   background: ${primary};
@@ -43,7 +43,7 @@ export const SecondaryButton = styled.a`
     transform: scale(1.05);
     cursor: pointer;
   }
-`
+`;
 
 export const PrimaryButton = styled.button`
   ${button}
@@ -54,17 +54,17 @@ export const PrimaryButton = styled.button`
   font-weight: 700;
   text-transform: uppercase;
   margin-top: 2rem;
-`
+`;
 export const PrimaryButtonNav = styled.a`
   ${button}
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.25;
-`
+`;
 
 export const PrimaryButtonInt = styled.span`
   ${button}
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.25;
-`
+`;
