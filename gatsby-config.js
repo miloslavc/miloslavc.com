@@ -1,8 +1,4 @@
-const dotenv = require('dotenv');
-
-if (process.env.NODE_ENV !== 'production') {
-  dotenv.config();
-}
+require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
@@ -36,15 +32,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        // replace "UA-XXXXXXXXX-X" with your own Tracking ID
         trackingId: 'UA-140802156-1',
       },
     },
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `z79s13p94dn6`,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        spaceId: process.env.CONTENTFUL_SPACE_ID || '',
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
+        host: process.env.CONTENTFUL_HOST || 'cdn.contentful.com',
       },
     },
     {
@@ -60,8 +56,5 @@ module.exports = {
         },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 };
