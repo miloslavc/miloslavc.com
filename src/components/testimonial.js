@@ -12,7 +12,7 @@ import { primary, gray } from '../utils';
 function Testimonial() {
   const data = useStaticQuery(graphql`
     query TestimonialQuery {
-      allContentfulTestimonial {
+      testimonial: allContentfulTestimonial {
         edges {
           node {
             id
@@ -31,7 +31,10 @@ function Testimonial() {
     }
   `);
 
-  const content = data.allContentfulTestimonial.edges;
+  // eslint-disable-next-line no-console
+  console.log(data);
+
+  const content = data.testimonial.edges;
   return (
     <Wrapper>
       {content.map(({ node }) => (
@@ -45,9 +48,7 @@ function Testimonial() {
           </InnerWrapper>
         </Content>
       ))}
-      {content.map(({ node }) => (
-        <Dot key={node.name} />
-      ))}
+      {content.length > 1 && content.map(({ node }) => <Dot key={node.name} />)}
     </Wrapper>
   );
 }
@@ -56,18 +57,19 @@ export default Testimonial;
 
 const Wrapper = styled.section`
   min-height: 50vh;
-  display: grid;
-  /* align-items: center; */
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   /* grid-template-rows: 1fr auto; */
-  grid-gap: 2rem;
+  /* grid-gap: 2rem; */
   padding: 0 2rem;
 `;
 
 const Content = styled.div`
   max-width: 40em;
   margin: 0 auto;
-  align-self: end;
+  align-self: center;
   text-align: center;
 `;
 const Image = styled.div`
@@ -96,5 +98,5 @@ const Dot = styled.span`
   width: 0.6rem;
   border-radius: 50%;
   background: ${primary};
-  align-self: start;
+  /* align-self: start; */
 `;

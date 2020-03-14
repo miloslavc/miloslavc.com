@@ -22,13 +22,16 @@ function About() {
         slug
         title
       }
-      allContentfulExperience(sort: { order: ASC, fields: createdAt }) {
+      experience: allContentfulExperience(
+        sort: { order: ASC, fields: createdAt }
+      ) {
         edges {
           node {
             duration
             role
             id
             name
+            location
           }
         }
       }
@@ -55,34 +58,27 @@ function About() {
         <Content>
           <ContentText>
             <TextPar color={black}>{aboutData.desc.desc}</TextPar>
-            <br />
             <TextPar color={black}>
-              If you have a project in mind and you are in need of my
-              <PrimaryButtonNav
-                href={aboutData.resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn--hover"
-              >
-                skills
-              </PrimaryButtonNav>
-              ,
+              If you have a project in mind and you are in need of my skills,
               <PrimaryButtonNav
                 href={`mailto:${aboutData.email}`}
                 target="_self"
                 rel="noopener noreferrer"
                 className="btn"
               >
-                let&apos;s talk
+                let&apos;s talk.
               </PrimaryButtonNav>
             </TextPar>
           </ContentText>
           <Experience>
             <H4>Experience</H4>
-            {data.allContentfulExperience.edges.map(({ node }) => (
+            {data.experience.edges.map(({ node }) => (
               <div key={node.id}>
                 <P color={black}>{`${node.duration} | ${node.role}`}</P>
-                <P color={gray}>{`${node.name}`}</P>
+                <P color={gray}>
+                  {`${node.name}`}
+                  {node.location && <span>{` - ${node.location}`}</span>}
+                </P>
               </div>
             ))}
           </Experience>
@@ -96,14 +92,14 @@ export default About;
 
 const Wrapper = styled.section`
   max-width: 70em;
-  min-height: 90vh;
+  min-height: 95vh;
   margin: 0 auto;
   display: grid;
   justify-items: center;
   align-items: center;
   grid-gap: 3em;
   grid-template-rows: 1fr auto;
-  padding: 2rem;
+  padding: 4rem 2rem;
 
   ${mq[2]} {
     grid-gap: 6rem;

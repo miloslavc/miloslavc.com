@@ -23,8 +23,8 @@ import SEO from '../components/seo';
 
 // animation
 const calc = (x, y) => [
-  -(y - window.innerHeight / 2) / 600,
-  (x - window.innerWidth / 2) / 600,
+  -(y - window.innerHeight / 2) / 1600,
+  (x - window.innerWidth / 2) / 1600,
   1,
 ];
 const trans = (x, y, s) =>
@@ -37,7 +37,7 @@ function ProjectLayout({ data, pageContext }) {
   // animation
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
-    config: { mass: 5, tension: 350, friction: 40 },
+    config: { mass: 1, tension: 350, friction: 80 },
   }));
 
   return (
@@ -131,13 +131,13 @@ export const query = graphql`
       work
       gallery {
         fluid(maxWidth: 1440, quality: 100) {
-          ...GatsbyContentfulFluid_withWebp
+          ...GatsbyContentfulFluid
         }
         id
       }
       hero {
         fluid(maxWidth: 1920, quality: 100) {
-          ...GatsbyContentfulFluid_withWebp
+          ...GatsbyContentfulFluid
         }
       }
       seo {

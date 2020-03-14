@@ -11,22 +11,22 @@ import { H4, H2, Text } from '../assets';
 import { mq } from '../utils';
 
 // eslint-disable-next-line react/display-name
-const Featured = React.forwardRef((props, ref) => {
+const Featured = React.forwardRef((_, ref) => {
   const [showData, setShowData] = useState(false);
   const [dataId, setDataId] = useState(null);
   const data = useStaticQuery(graphql`
-    query MyQuery {
-      allContentfulProjects {
+    query FeaturedQuery {
+      featured: allContentfulProjects {
         edges {
           node {
             slug
             id
             category
-            title
             work
+            title
             image {
               fluid(maxWidth: 1280) {
-                ...GatsbyContentfulFluid_withWebp
+                ...GatsbyContentfulFluid
               }
             }
           }
@@ -44,7 +44,10 @@ const Featured = React.forwardRef((props, ref) => {
     setDataId(null);
   };
 
-  const featuredProjects = data.allContentfulProjects.edges;
+  // eslint-disable-next-line no-console
+  console.log(data);
+
+  const featuredProjects = data.featured.edges;
   return (
     <Wrapper ref={ref}>
       <H4>Recent Works</H4>
@@ -56,7 +59,7 @@ const Featured = React.forwardRef((props, ref) => {
               onMouseLeave={handleLeave}
             >
               <Image scale={dataId === node.id ? 1.03 : 1}>
-                <Img fluid={node.image.fluid} />
+                {node.image && <Img fluid={node.image.fluid} />}
               </Image>
               <CardTitle opacity={isMobile || dataId === node.id ? 1 : 0}>
                 <H2>{node.title}</H2>
