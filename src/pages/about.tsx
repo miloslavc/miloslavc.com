@@ -6,7 +6,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 // assets
-import { P, H4, TextPar, Span, PrimaryButtonNav } from '../assets';
+import { P, H4, TextPar, Span, PrimaryButtonNav } from '../assets/';
 import { primary, mq, black, gray } from '../utils';
 
 export const pageQuery = graphql`
@@ -35,6 +35,14 @@ export const pageQuery = graphql`
   }
 `;
 
+interface Experience {
+  duration: string;
+  role: string;
+  id: string;
+  name: string;
+  location: string | null;
+}
+
 interface Props {
   data: {
     about: {
@@ -46,15 +54,7 @@ interface Props {
       email: string;
     };
     experience: {
-      edges: {
-        node: {
-          duration: string;
-          role: string;
-          id: string;
-          name: string;
-          location: string | null;
-        };
-      };
+      edges: { node: Experience }[];
     };
   };
 }

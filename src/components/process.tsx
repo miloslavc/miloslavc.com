@@ -8,10 +8,25 @@ import styled from '@emotion/styled';
 import { H4, H1, HeroHeading, Text, Key } from '../assets';
 import { primary, mq } from '../utils';
 
+type Process = {
+  process: {
+    edges: {
+      node: {
+        id: string;
+        title: string;
+        key: string;
+        desc: {
+          desc: string;
+        };
+      };
+    }[];
+  };
+};
+
 function Process() {
-  const data = useStaticQuery(graphql`
+  const { process }: Process = useStaticQuery(graphql`
     query ProcessQuery {
-      allContentfulProcess(sort: { order: ASC, fields: createdAt }) {
+      process: allContentfulProcess(sort: { order: ASC, fields: createdAt }) {
         edges {
           node {
             id
@@ -35,7 +50,7 @@ function Process() {
         Let’s start working on your awesome project.
       </Text>
       <ContentWrapper>
-        {data.allContentfulProcess.edges.map(({ node }, index) => (
+        {process.edges.map(({ node }, index) => (
           <li key={node.id}>
             <H1>
               <span className="number">{`0${index + 1} `}</span>

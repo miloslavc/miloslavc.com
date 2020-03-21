@@ -16,6 +16,7 @@
     "gatsby-plugin-offline": "^3.0.37",
     "gatsby-plugin-react-helmet": "^3.1.23",
     "gatsby-plugin-sharp": "^2.4.7",
+    "gatsby-plugin-tslint": "^0.0.2",
     "gatsby-plugin-typescript": "^2.3.0",
     "gatsby-source-contentful": "^2.1.91",
     "gatsby-source-filesystem": "^2.1.50",
@@ -29,19 +30,19 @@
     "react-spring": "^8.0.27"
   },
   "devDependencies": {
+    "@types/react": "^16.9.25",
+    "@types/react-dom": "^16.9.5",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.17.0",
     "gatsby-plugin-sentry": "^1.0.1",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
+    "tslint": "^6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-loader": "^3.5.4",
+    "tslint-plugin-prettier": "^2.2.0",
+    "tslint-react": "^4.2.0",
     "typescript": "^3.8.3"
   },
   "keywords": [
@@ -55,10 +56,10 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "precommit": "lint-staged",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "lint": "tslint --project .",
+    "lint:fix": "tslint --fix --project ."
   },
   "repository": {
     "type": "git",

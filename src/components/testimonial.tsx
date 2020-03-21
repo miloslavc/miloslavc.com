@@ -9,8 +9,25 @@ import Img from 'gatsby-image';
 import { H2, Text } from '../assets';
 import { primary, gray } from '../utils';
 
+type Testimonial = {
+  testimonial: {
+    edges: {
+      node: {
+        id: string;
+        desc: {
+          desc: string;
+        };
+        name: string;
+        image: {
+          fluid: any;
+        };
+      };
+    }[];
+  };
+};
+
 function Testimonial() {
-  const data = useStaticQuery(graphql`
+  const { testimonial }: Testimonial = useStaticQuery(graphql`
     query TestimonialQuery {
       testimonial: allContentfulTestimonial {
         edges {
@@ -31,13 +48,11 @@ function Testimonial() {
     }
   `);
 
-  // eslint-disable-next-line no-console
-  console.log(data);
+  const { edges } = testimonial;
 
-  const content = data.testimonial.edges;
   return (
     <Wrapper>
-      {content.map(({ node }) => (
+      {edges.map(({ node }) => (
         <Content key={node.id}>
           <Text>{node.desc.desc}</Text>
           <InnerWrapper>
@@ -48,7 +63,7 @@ function Testimonial() {
           </InnerWrapper>
         </Content>
       ))}
-      {content.length > 1 && content.map(({ node }) => <Dot key={node.name} />)}
+      {edges.length > 1 && edges.map(({ node }) => <Dot key={node.name} />)}
     </Wrapper>
   );
 }

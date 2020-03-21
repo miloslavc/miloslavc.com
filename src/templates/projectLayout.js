@@ -14,7 +14,7 @@ import {
   PrimaryButtonInt,
   TextPar,
   SecondaryButton,
-} from '../assets';
+} from '../assets/index.ts';
 import { mq, mqx, gray, black } from '../utils';
 
 // gatsby assets
