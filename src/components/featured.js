@@ -44,9 +44,6 @@ const Featured = React.forwardRef((_, ref) => {
     setDataId(null);
   };
 
-  // eslint-disable-next-line no-console
-  console.log(data);
-
   const featuredProjects = data.featured.edges;
   return (
     <Wrapper ref={ref}>

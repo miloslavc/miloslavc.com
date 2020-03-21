@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import styled from '@emotion/styled';
 
 import Layout from '../components/layout';
@@ -9,36 +9,58 @@ import SEO from '../components/seo';
 import { P, H4, TextPar, Span, PrimaryButtonNav } from '../assets';
 import { primary, mq, black, gray } from '../utils';
 
-function About() {
-  const data = useStaticQuery(graphql`
-    query AboutQuery {
-      contentfulAbout(slug: { eq: "about" }) {
-        desc {
-          desc
-        }
-        email
-        heading
-        resume
-        slug
-        title
+export const pageQuery = graphql`
+  query AboutQuery {
+    about: contentfulAbout(slug: { eq: "about" }) {
+      desc {
+        desc
       }
-      experience: allContentfulExperience(
-        sort: { order: ASC, fields: createdAt }
-      ) {
-        edges {
-          node {
-            duration
-            role
-            id
-            name
-            location
-          }
+      email
+      heading
+      title
+    }
+    experience: allContentfulExperience(
+      sort: { order: ASC, fields: createdAt }
+    ) {
+      edges {
+        node {
+          duration
+          role
+          id
+          name
+          location
         }
       }
     }
-  `);
+  }
+`;
 
-  const aboutData = data.contentfulAbout;
+interface Props {
+  data: {
+    about: {
+      desc: {
+        desc: string;
+      };
+      title: string;
+      heading: string;
+      email: string;
+    };
+    experience: {
+      edges: {
+        node: {
+          duration: string;
+          role: string;
+          id: string;
+          name: string;
+          location: string | null;
+        };
+      };
+    };
+  };
+}
+
+function About({ data }: Props) {
+  const { about, experience } = data;
   return (
     <Layout>
       <SEO title="About me" />
@@ -51,17 +73,17 @@ function About() {
             </span>
           </H4>
           <h1>
-            My name is <Span color={primary}>{aboutData.title}. </Span>
+            My name is <Span color={primary}>{about.title}. </Span>
           </h1>
-          <h1>{aboutData.heading}</h1>
+          <h1>{about.heading}</h1>
         </Heading>
         <Content>
           <ContentText>
-            <TextPar color={black}>{aboutData.desc.desc}</TextPar>
+            <TextPar color={black}>{about.desc.desc}</TextPar>
             <TextPar color={black}>
               If you have a project in mind and you are in need of my skills,
               <PrimaryButtonNav
-                href={`mailto:${aboutData.email}`}
+                href={`mailto:${about.email}`}
                 target="_self"
                 rel="noopener noreferrer"
                 className="btn"
@@ -72,7 +94,7 @@ function About() {
           </ContentText>
           <Experience>
             <H4>Experience</H4>
-            {data.experience.edges.map(({ node }) => (
+            {experience.edges.map(({ node }) => (
               <div key={node.id}>
                 <P color={black}>{`${node.duration} | ${node.role}`}</P>
                 <P color={gray}>
