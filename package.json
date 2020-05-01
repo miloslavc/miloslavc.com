@@ -37,7 +37,7 @@
     "gatsby-plugin-sentry": "^1.0.1",
     "husky": "^4.2.3",
     "lint-staged": "^9.5.0",
-    "prettier": "^2.0.2"
+    "prettier": "^2.0.5"
   },
   "keywords": [
     "gatsby"
