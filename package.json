@@ -63,14 +63,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
       "prepare-commit-msg": "exec < /dev/tty && npx git cz --hook || true"
     }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier — single-quote — write",
-      "git add"
-    ]
   }
 }
