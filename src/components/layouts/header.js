@@ -42,7 +42,7 @@ const Header = () => (
       {/* <Link to="/blog">Blog</Link> */}
       <a
         className="CTA"
-        href="mailto:miloslavc90@gmail.com"
+        href="mailto:contact@miloslavc.com"
         rel="noopener noreferrer"
       >
         Let&apos;s Talk

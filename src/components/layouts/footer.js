@@ -19,7 +19,7 @@ function Footer() {
         </Text>
         <a
           className="CTA"
-          href="mailto:miloslavc90@gmail.com"
+          href="mailto:contact@miloslavc.com"
           rel="noopener noreferrer"
         >
           contact@miloslavc.com
