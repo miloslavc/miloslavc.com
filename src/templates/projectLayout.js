@@ -47,7 +47,7 @@ function ProjectLayout({ data, pageContext }) {
         {projectData.hero && (
           <Parallax>
             <animated.div
-              class="card"
+              className="card"
               onMouseMove={({ clientX: x, clientY: y }) =>
                 set({ xys: calc(x, y) })
               }
@@ -56,7 +56,12 @@ function ProjectLayout({ data, pageContext }) {
               style={{ transform: props.xys.interpolate(trans) }}
             >
               <ImageWrapper>
-                <Img fluid={projectData.hero.fluid} />
+                <Img
+                  fluid={projectData.hero.fluid}
+                  fadeIn={false}
+                  loading="eager"
+                  critical
+                />
               </ImageWrapper>
             </animated.div>
           </Parallax>
@@ -97,7 +102,7 @@ function ProjectLayout({ data, pageContext }) {
         </ProjectWrapper>
         <ProjectGallery>
           {projectData.gallery &&
-            projectData.gallery.map(item => (
+            projectData.gallery.map((item) => (
               <Img key={item.id} fluid={item.fluid} />
             ))}
         </ProjectGallery>
@@ -130,14 +135,14 @@ export const query = graphql`
       year
       work
       gallery {
-        fluid(maxWidth: 1440, quality: 100) {
-          ...GatsbyContentfulFluid
+        fluid(maxWidth: 1440, quality: 85) {
+          ...GatsbyContentfulFluid_withWebp
         }
         id
       }
       hero {
-        fluid(maxWidth: 1920, quality: 100) {
-          ...GatsbyContentfulFluid
+        fluid(maxWidth: 1920, quality: 85) {
+          ...GatsbyContentfulFluid_withWebp
         }
       }
       seo {
