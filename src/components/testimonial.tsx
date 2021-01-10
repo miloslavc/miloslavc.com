@@ -76,8 +76,6 @@ const Wrapper = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* grid-template-rows: 1fr auto; */
-  /* grid-gap: 2rem; */
   padding: 0 2rem;
 `;
 
@@ -113,5 +111,4 @@ const Dot = styled.span`
   width: 0.6rem;
   border-radius: 50%;
   background: ${primary};
-  /* align-self: start; */
 `;

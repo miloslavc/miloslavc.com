@@ -26,7 +26,7 @@ const Featured = React.forwardRef((_, ref) => {
             title
             image {
               fluid(maxWidth: 1280) {
-                ...GatsbyContentfulFluid
+                ...GatsbyContentfulFluid_withWebp
               }
             }
           }
@@ -35,7 +35,7 @@ const Featured = React.forwardRef((_, ref) => {
     }
   `);
 
-  const handleEnter = id => {
+  const handleEnter = (id) => {
     setShowData(!showData);
     setDataId(id);
   };
@@ -56,7 +56,9 @@ const Featured = React.forwardRef((_, ref) => {
               onMouseLeave={handleLeave}
             >
               <Image scale={dataId === node.id ? 1.03 : 1}>
-                {node.image && <Img fluid={node.image.fluid} />}
+                {node.image && (
+                  <Img fadeIn={false} fluid={node.image.fluid} loading="auto" />
+                )}
               </Image>
               <CardTitle opacity={isMobile || dataId === node.id ? 1 : 0}>
                 <H2>{node.title}</H2>
