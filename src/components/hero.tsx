@@ -21,7 +21,7 @@ const items = [
 ];
 const config = { mass: 5, tension: 2000, friction: 200 };
 
-function Hero({ handleScroll }) {
+function Hero({ handleScroll }: any) {
   const [toggle, set] = useState(true);
 
   // animation settings
@@ -35,7 +35,7 @@ function Hero({ handleScroll }) {
 
   return (
     <Wrapper>
-      <Content onLoad={() => set(state => !state)}>
+      <Content onLoad={() => set((state) => !state)}>
         <H4>Miloslav Cvetkovic</H4>
         {trail.map(({ x, height, ...rest }, index) => (
           <animated.div
@@ -43,7 +43,10 @@ function Hero({ handleScroll }) {
             className="trails-text"
             style={{
               ...rest,
-              transform: x.interpolate(value => `translate3d(0,${value}px,0)`),
+              // @ts-ignore
+              transform: x.interpolate(
+                (value: any) => `translate3d(0,${value}px,0)`,
+              ),
             }}
           >
             <HeroHeading>{items[index]}</HeroHeading>

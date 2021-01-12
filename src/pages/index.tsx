@@ -19,6 +19,7 @@ function IndexPage() {
       behavior: 'smooth',
       block: 'start',
     });
+
   return (
     <Layout>
       <SEO title="Home" />
