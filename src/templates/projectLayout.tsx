@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
 
 // dependencies
 import { graphql, Link } from 'gatsby';
@@ -14,7 +14,7 @@ import {
   PrimaryButtonInt,
   TextPar,
   SecondaryButton,
-} from '../assets/index.ts';
+} from '../assets';
 import { mq, mqx, gray, black } from '../utils';
 
 // gatsby assets
@@ -22,15 +22,43 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 // animation
-const calc = (x, y) => [
+const calc = (x: number, y: number) => [
   -(y - window.innerHeight / 2) / 1600,
   (x - window.innerWidth / 2) / 1600,
   1,
 ];
-const trans = (x, y, s) =>
+
+const trans = (x: number, y: number, s: number): string =>
   `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
-function ProjectLayout({ data, pageContext }) {
+type Project = {
+  data: {
+    contentfulProjects: {
+      hero: {
+        fluid: any;
+      };
+      seo: {
+        title: string;
+      };
+      title: string;
+      desc: string;
+      category: string;
+      year: string;
+      work: string;
+      client: string;
+      live: string;
+      gitHub: string;
+      stack: { stack: string };
+      gallery: {
+        fluid: FluidObject | FluidObject[];
+        id: string;
+      }[];
+    };
+  };
+  pageContext: any;
+};
+
+function ProjectLayout({ data, pageContext }: Project) {
   const { next, prev } = pageContext;
   const projectData = data.contentfulProjects;
 
@@ -52,7 +80,7 @@ function ProjectLayout({ data, pageContext }) {
                 set({ xys: calc(x, y) })
               }
               onMouseLeave={() => set({ xys: [0, 0, 1] })}
-              // eslint-disable-next-line react/destructuring-assignment
+              // @ts-ignore
               style={{ transform: props.xys.interpolate(trans) }}
             >
               <ImageWrapper>

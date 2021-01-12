@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
 // gatsby assets
 import Layout from '../components/layout';
@@ -11,9 +11,10 @@ import Featured from '../components/featured';
 import Testimonial from '../components/testimonial';
 
 function IndexPage() {
-  const ref = createRef();
+  const ref = React.useRef<HTMLDivElement>(null);
 
   const handleScroll = () =>
+    ref.current &&
     ref.current.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
@@ -22,6 +23,7 @@ function IndexPage() {
     <Layout>
       <SEO title="Home" />
       <Hero handleScroll={handleScroll} />
+      {/*// @ts-ignore */}
       <Featured ref={ref} />
       <hr />
       <Process />

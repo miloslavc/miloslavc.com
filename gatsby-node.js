@@ -2,7 +2,7 @@ const path = require(`path`);
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
-  const projectTemplate = path.resolve(`./src/templates/projectLayout.js`);
+  const projectTemplate = path.resolve(`./src/templates/projectLayout.tsx`);
   return graphql(`
     {
       allContentfulProjects(sort: { fields: title, order: ASC }) {
@@ -13,7 +13,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     }
-  `).then(result => {
+  `).then((result) => {
     if (result.error) {
       throw result.error;
     }

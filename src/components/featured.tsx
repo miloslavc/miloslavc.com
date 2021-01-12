@@ -4,17 +4,34 @@ import { isMobile } from 'react-device-detect';
 
 // dependencies
 import styled from '@emotion/styled';
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
 
 // assets
 import { H4, H2, Text } from '../assets';
 import { mq } from '../utils';
 
-// eslint-disable-next-line react/display-name
-const Featured = React.forwardRef((_, ref) => {
+export type Ref = HTMLButtonElement;
+type Projects = {
+  featured: {
+    edges: {
+      node: {
+        id: string;
+        slug: string;
+        category: string;
+        work: string;
+        title: string;
+        image: {
+          fluid: FluidObject | FluidObject[];
+        };
+      };
+    }[];
+  };
+};
+
+const Featured = React.forwardRef<Ref>((_, ref) => {
   const [showData, setShowData] = useState(false);
-  const [dataId, setDataId] = useState(null);
-  const data = useStaticQuery(graphql`
+  const [dataId, setDataId] = useState<null | string>(null);
+  const { featured }: Projects = useStaticQuery(graphql`
     query FeaturedQuery {
       featured: allContentfulProjects {
         edges {
@@ -35,7 +52,9 @@ const Featured = React.forwardRef((_, ref) => {
     }
   `);
 
-  const handleEnter = (id) => {
+  console.log(featured);
+
+  const handleEnter = (id: string) => {
     setShowData(!showData);
     setDataId(id);
   };
@@ -44,7 +63,7 @@ const Featured = React.forwardRef((_, ref) => {
     setDataId(null);
   };
 
-  const featuredProjects = data.featured.edges;
+  const featuredProjects = featured.edges;
   return (
     <Wrapper ref={ref}>
       <H4>Recent Works</H4>
@@ -116,14 +135,14 @@ const Card = styled.article`
   grid-gap: 1rem;
 `;
 
-const CardTitle = styled.div`
+const CardTitle = styled.div<{ opacity: number }>`
   p {
     opacity: ${({ opacity }) => opacity};
     transition: all 0.2s ease-in;
     margin-bottom: 0;
   }
 `;
-const Image = styled.div`
+const Image = styled.div<{ scale: number }>`
   transition: all 0.2s ease-in;
   transform: scale(${({ scale }) => scale});
 `;
