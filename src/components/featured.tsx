@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { isMobile } from 'react-device-detect';
 
@@ -29,8 +29,8 @@ type Projects = {
 };
 
 const Featured = React.forwardRef<Ref>((_, ref) => {
-  const [showData, setShowData] = useState(false);
-  const [dataId, setDataId] = useState<null | string>(null);
+  const [showData, setShowData] = React.useState(false);
+  const [dataId, setDataId] = React.useState<null | string>(null);
   const { featured }: Projects = useStaticQuery(graphql`
     query FeaturedQuery {
       featured: allContentfulProjects {
@@ -51,8 +51,6 @@ const Featured = React.forwardRef<Ref>((_, ref) => {
       }
     }
   `);
-
-  console.log(featured);
 
   const handleEnter = (id: string) => {
     setShowData(!showData);

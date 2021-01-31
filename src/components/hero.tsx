@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 
 // dependencies
 import styled from '@emotion/styled';
@@ -22,7 +22,7 @@ const items = [
 const config = { mass: 5, tension: 2000, friction: 200 };
 
 function Hero({ handleScroll }: any) {
-  const [toggle, set] = useState(true);
+  const [toggle, set] = React.useState(true);
 
   // animation settings
   const trail = useTrail(items.length, {
