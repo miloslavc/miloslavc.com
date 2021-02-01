@@ -72,13 +72,17 @@ const Featured = React.forwardRef<HTMLButtonElement>((_, ref) => {
               onMouseLeave={handleLeave}
             >
               <Image scale={dataId === node.id ? 1.03 : 1}>
-                {node.image && (
-                  <Img fadeIn={false} fluid={node.image.fluid} loading="auto" />
+                {node?.image && (
+                  <Img
+                    fadeIn={false}
+                    fluid={node?.image?.fluid}
+                    loading="auto"
+                  />
                 )}
               </Image>
               <CardTitle opacity={isMobile || dataId === node.id ? 1 : 0}>
-                <H2>{node.title}</H2>
-                <Text>{node.work}</Text>
+                <H2>{node?.title}</H2>
+                <Text>{node?.work}</Text>
               </CardTitle>
             </Card>
           </Link>

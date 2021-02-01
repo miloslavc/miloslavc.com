@@ -50,15 +50,15 @@ function Process() {
         Let’s start working on your awesome project.
       </Text>
       <ContentWrapper>
-        {process.edges.map(({ node }, index) => (
+        {process?.edges?.map(({ node }, index) => (
           <li key={node.id}>
             <H1>
               <span className="number">{`0${index + 1} `}</span>
-              {node.title}
+              {node?.title}
             </H1>
             <Text>
-              <Key>{node.key}. </Key>
-              {node.desc.desc}
+              <Key>{node?.key}. </Key>
+              {node?.desc?.desc}
             </Text>
           </li>
         ))}

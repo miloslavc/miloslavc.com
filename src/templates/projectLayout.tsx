@@ -70,9 +70,9 @@ function ProjectLayout({ data, pageContext }: Project) {
 
   return (
     <Layout>
-      <SEO title={` ${projectData.seo.title}`} />
+      <SEO title={` ${projectData?.seo?.title}`} />
       <Wrapper>
-        {projectData.hero && (
+        {projectData?.hero && (
           <Parallax>
             <animated.div
               className="card"
@@ -85,7 +85,7 @@ function ProjectLayout({ data, pageContext }: Project) {
             >
               <ImageWrapper>
                 <Img
-                  fluid={projectData.hero.fluid}
+                  fluid={projectData?.hero?.fluid}
                   fadeIn={false}
                   loading="eager"
                   critical
@@ -95,44 +95,43 @@ function ProjectLayout({ data, pageContext }: Project) {
           </Parallax>
         )}
         <ProjectWrapper>
-          <H2>{projectData.title}</H2>
-          <TextPar color={gray}>{projectData.desc}</TextPar>
+          <H2>{projectData?.title}</H2>
+          <TextPar color={gray}>{projectData?.desc}</TextPar>
           <Details>
             <li>
               <H4>Category</H4>
-              <P>{projectData.category}</P>
+              <P>{projectData?.category}</P>
             </li>
             <li>
               <H4>Year</H4>
-              <P>{projectData.year}</P>
+              <P>{projectData?.year}</P>
             </li>
             <li>
               <H4>Work</H4>
-              <P>{projectData.work}</P>
+              <P>{projectData?.work}</P>
             </li>
             <li>
               <H4>Client</H4>
-              <P>{projectData.client}</P>
+              <P>{projectData?.client}</P>
             </li>
             <li className="stack">
               <H4>Stack</H4>
-              <P>{projectData.stack.stack}</P>
+              <P>{projectData?.stack?.stack}</P>
             </li>
           </Details>
           <ExternalNav>
-            <SecondaryButton href={projectData.live} target="_blank">
+            <SecondaryButton href={projectData?.live} target="_blank">
               live
             </SecondaryButton>
-            <SecondaryButton href={projectData.gitHub} target="_blank">
+            <SecondaryButton href={projectData?.gitHub} target="_blank">
               git
             </SecondaryButton>
           </ExternalNav>
         </ProjectWrapper>
         <ProjectGallery>
-          {projectData.gallery &&
-            projectData.gallery.map((item) => (
-              <Img key={item.id} fluid={item.fluid} />
-            ))}
+          {projectData?.gallery?.map((item) => (
+            <Img key={item.id} fluid={item?.fluid} />
+          ))}
         </ProjectGallery>
         <Nav>
           <Link className={prev ? 'active' : 'hidden'} to={`/projects/${prev}`}>

@@ -73,17 +73,17 @@ function About({ data }: Props) {
             </span>
           </H4>
           <h1>
-            My name is <Span color={primary}>{about.title}. </Span>
+            My name is <Span color={primary}>{about?.title}. </Span>
           </h1>
-          <h1>{about.heading}</h1>
+          <h1>{about?.heading}</h1>
         </Heading>
         <Content>
           <ContentText>
-            <TextPar color={black}>{about.desc.desc}</TextPar>
+            <TextPar color={black}>{about?.desc?.desc}</TextPar>
             <TextPar color={black}>
               If you have a project in mind and you are in need of my skills,
               <PrimaryButtonNav
-                href={`mailto:${about.email}`}
+                href={`mailto:${about?.email}`}
                 target="_self"
                 rel="noopener noreferrer"
                 className="btn"
@@ -96,10 +96,10 @@ function About({ data }: Props) {
             <H4>Experience</H4>
             {experience.edges.map(({ node }) => (
               <div key={node.id}>
-                <P color={black}>{`${node.duration} | ${node.role}`}</P>
+                <P color={black}>{`${node?.duration} | ${node?.role}`}</P>
                 <P color={gray}>
-                  {`${node.name}`}
-                  {node.location && <span>{` - ${node.location}`}</span>}
+                  {`${node?.name}`}
+                  {node?.location && <span>{` - ${node.location}`}</span>}
                 </P>
               </div>
             ))}
