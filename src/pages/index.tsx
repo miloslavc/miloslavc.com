@@ -11,7 +11,7 @@ import Featured from '../components/featured';
 import Testimonial from '../components/testimonial';
 
 function IndexPage() {
-  const ref = React.useRef<HTMLDivElement>(null);
+  const ref = React.useRef<HTMLButtonElement>(null);
 
   const handleScroll = () =>
     ref.current &&

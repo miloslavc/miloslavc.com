@@ -5,7 +5,11 @@ import Header from './layouts/header';
 import Footer from './layouts/footer';
 import './layout.css';
 
-const Layout: React.FC = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+const Layout = ({ children }: Props) => {
   return (
     <React.Fragment>
       <Header />

@@ -10,7 +10,6 @@ import Img, { FluidObject } from 'gatsby-image';
 import { H4, H2, Text } from '../assets';
 import { mq } from '../utils';
 
-export type Ref = HTMLButtonElement;
 type Projects = {
   featured: {
     edges: {
@@ -28,7 +27,7 @@ type Projects = {
   };
 };
 
-const Featured = React.forwardRef<Ref>((_, ref) => {
+const Featured = React.forwardRef<HTMLButtonElement>((_, ref) => {
   const [showData, setShowData] = React.useState(false);
   const [dataId, setDataId] = React.useState<null | string>(null);
   const { featured }: Projects = useStaticQuery(graphql`

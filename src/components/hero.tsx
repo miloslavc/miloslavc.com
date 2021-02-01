@@ -21,7 +21,11 @@ const items = [
 ];
 const config = { mass: 5, tension: 2000, friction: 200 };
 
-function Hero({ handleScroll }: any) {
+interface Props {
+  handleScroll: () => void;
+}
+
+function Hero({ handleScroll }: Props) {
   const [toggle, set] = React.useState(true);
 
   // animation settings
