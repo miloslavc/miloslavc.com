@@ -80,7 +80,7 @@ function ProjectLayout({ data, pageContext }: Project) {
                 set({ xys: calc(x, y) })
               }
               onMouseLeave={() => set({ xys: [0, 0, 1] })}
-              // @ts-ignore
+              // @ts-expect-error react-spring
               style={{ transform: props.xys.interpolate(trans) }}
             >
               <ImageWrapper>

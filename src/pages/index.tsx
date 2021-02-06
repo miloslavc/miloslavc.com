@@ -24,7 +24,6 @@ function IndexPage() {
     <Layout>
       <SEO title="Home" />
       <Hero handleScroll={handleScroll} />
-      {/*// @ts-ignore */}
       <Featured ref={ref} />
       <hr />
       <Process />
