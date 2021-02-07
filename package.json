@@ -56,8 +56,8 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "precommit": "lint-staged",
     "type-check": "tsc --noEmit",
-    "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix"
   },
   "husky": {
     "hooks": {

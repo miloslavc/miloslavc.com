@@ -41,13 +41,13 @@ function Hero({ handleScroll }: Props) {
     <Wrapper>
       <Content onLoad={() => set((state) => !state)}>
         <H4>Miloslav Cvetkovic</H4>
-        {trail.map(({ x, height, ...rest }, index) => (
+        {trail.map(({ x, ...rest }, index) => (
           <animated.div
             key={items[index]}
             className="trails-text"
             style={{
               ...rest,
-              // @ts-ignore
+              // @ts-expect-error react-spring
               transform: x.interpolate(
                 (value: any) => `translate3d(0,${value}px,0)`,
               ),
