@@ -38,13 +38,12 @@ const Header = () => (
       </a>
       <span className="icons"> - </span>
       <Link to="/about">About</Link>
-      {/* <Link to="/blog">Blog</Link> */}
       <a
         className="CTA"
         href="mailto:contact@miloslavc.com"
         rel="noopener noreferrer"
       >
-        Let&apos;s Talk
+        Contact
       </a>
     </nav>
   </HeaderStyled>
@@ -65,7 +64,7 @@ const HeaderStyled = styled.header`
   z-index: 99;
   .logo {
     margin-right: auto;
-    font-size: 1.25em;
+    font-size: 1.25rem;
     font-weight: 700;
     color: ${primary};
   }
@@ -74,7 +73,7 @@ const HeaderStyled = styled.header`
   }
   .CTA {
     background: ${primary};
-    padding: 0.4rem 1rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 50px;
     color: ${white};
     &:hover {

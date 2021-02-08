@@ -113,7 +113,7 @@ function About({ data }: Props) {
 export default About;
 
 const Wrapper = styled.section`
-  max-width: 70em;
+  max-width: 70rem;
   min-height: 95vh;
   margin: 0 auto;
   display: grid;

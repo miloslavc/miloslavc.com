@@ -8,27 +8,16 @@ import SEO from '../components/seo';
 import Hero from '../components/hero';
 import Process from '../components/process';
 import Featured from '../components/featured';
-import Testimonial from '../components/testimonial';
+// import Testimonial from '../components/testimonial';
 
 function IndexPage() {
-  const ref = React.useRef<HTMLButtonElement>(null);
-
-  const handleScroll = () =>
-    ref.current &&
-    ref.current.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-
   return (
     <Layout>
       <SEO title="Home" />
-      <Hero handleScroll={handleScroll} />
-      <Featured ref={ref} />
-      <hr />
+      <Hero />
       <Process />
-      <hr />
-      <Testimonial />
+      <Featured />
+      {/* <Testimonial /> */}
     </Layout>
   );
 }

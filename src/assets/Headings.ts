@@ -4,10 +4,10 @@ import { mq, gray, white, black, primary } from '../utils';
 export const HeroHeading = styled.h1`
   display: inline-block;
   color: ${black};
-  line-height: 1.2;
-  font-size: 2.5em;
+  line-height: 1.5;
+  font-size: 2.5rem;
   ${mq[0]} {
-    font-size: 3em;
+    font-size: 3.5rem;
   }
   font-weight: 800;
 `;

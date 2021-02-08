@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { useTrail, animated } from 'react-spring';
 
 // assets
-import { H4, Text, HeroHeading, PrimaryButton } from '../assets';
+import { Text, HeroHeading, CTA } from '../assets';
 import { primary, mq } from '../utils';
 
 const items = [
@@ -21,11 +21,7 @@ const items = [
 ];
 const config = { mass: 5, tension: 2000, friction: 200 };
 
-interface Props {
-  handleScroll: () => void;
-}
-
-function Hero({ handleScroll }: Props) {
+function Hero() {
   const [toggle, set] = React.useState(true);
 
   // animation settings
@@ -40,7 +36,7 @@ function Hero({ handleScroll }: Props) {
   return (
     <Wrapper>
       <Content onLoad={() => set((state) => !state)}>
-        <H4>Miloslav Cvetkovic</H4>
+        {/* <H4>Miloslav Cvetkovic</H4> */}
         {trail.map(({ x, ...rest }, index) => (
           <animated.div
             key={items[index]}
@@ -57,10 +53,10 @@ function Hero({ handleScroll }: Props) {
           </animated.div>
         ))}
         <Text>
-          I am passionate about solving interesting problems from idea to the
-          deployment.
+          I am passionate about solving interesting problems and shaping ideas
+          into products.
         </Text>
-        <PrimaryButton onClick={handleScroll}>Recent Works</PrimaryButton>
+        <CTA href="mailto:contact@miloslavc.com">Get in Touch</CTA>
       </Content>
     </Wrapper>
   );
@@ -69,7 +65,7 @@ function Hero({ handleScroll }: Props) {
 export default Hero;
 
 const Wrapper = styled.section`
-  max-width: 70em;
+  max-width: 70rem;
   padding: 10vh 2rem 2rem;
   margin: 0 auto;
   min-height: 100vh;

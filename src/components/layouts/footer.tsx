@@ -99,8 +99,8 @@ const Content = styled.div`
   .CTA {
     background: ${primary};
     color: ${white};
-    padding: 0.4em 1em;
-    border-radius: 50px;
+    padding: 0.8rem 1.6rem;
+    border-radius: 5rem;
     font-size: 1.125em;
     font-weight: 700;
     transition: all 0.2s ease-in;

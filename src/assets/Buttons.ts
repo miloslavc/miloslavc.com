@@ -68,3 +68,24 @@ export const PrimaryButtonInt = styled.span`
   font-weight: 600;
   line-height: 1.25;
 `;
+
+export const CTA = styled.a`
+  display: inline-block;
+  margin-top: 2rem;
+  background: ${white};
+  color: ${black};
+  padding: 1rem 2rem;
+  border-radius: 5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all 0.2s ease-in;
+  border: 2px solid ${black};
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    background: ${black};
+    color: ${white};
+  }
+`;

@@ -27,7 +27,7 @@ type Projects = {
   };
 };
 
-const Featured = React.forwardRef<HTMLButtonElement>((_, ref) => {
+const Featured = () => {
   const [showData, setShowData] = React.useState(false);
   const [dataId, setDataId] = React.useState<null | string>(null);
   const { featured }: Projects = useStaticQuery(graphql`
@@ -62,7 +62,7 @@ const Featured = React.forwardRef<HTMLButtonElement>((_, ref) => {
 
   const featuredProjects = featured.edges;
   return (
-    <Wrapper ref={ref}>
+    <Wrapper>
       <H4>Recent Works</H4>
       <CardWrapper>
         {featuredProjects.map(({ node }) => (
@@ -90,7 +90,7 @@ const Featured = React.forwardRef<HTMLButtonElement>((_, ref) => {
       </CardWrapper>
     </Wrapper>
   );
-});
+};
 
 export default Featured;
 

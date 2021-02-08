@@ -71,13 +71,14 @@ export default Process;
 
 const Wrapper = styled.section`
   min-height: 92vh;
-  max-width: 70em;
+  max-width: 70rem;
   margin: 0 auto;
   padding: 2rem;
   display: grid;
   grid-template-rows: auto auto auto 1fr;
   align-items: center;
 `;
+
 const ContentWrapper = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
