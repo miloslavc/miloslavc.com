@@ -50,7 +50,6 @@ const Featured = () => {
       }
     }
   `);
-
   const handleEnter = (id: string) => {
     setShowData(!showData);
     setDataId(id);
@@ -66,7 +65,11 @@ const Featured = () => {
       <H4>Recent Works</H4>
       <CardWrapper>
         {featuredProjects.map(({ node }) => (
-          <Link to={`/projects/${node.slug}`} key={node.id}>
+          <Link
+            to={`/projects/${node.slug}`}
+            key={node.id}
+            data-testid="featured"
+          >
             <Card
               onMouseEnter={() => handleEnter(node.id)}
               onMouseLeave={handleLeave}

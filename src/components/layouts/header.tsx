@@ -37,7 +37,9 @@ const Header = () => (
         <FaLinkedinIn />
       </a>
       <span className="icons"> - </span>
-      <Link to="/about">About</Link>
+      <Link className="about" to="/about">
+        About
+      </Link>
       <a
         className="CTA"
         href="mailto:contact@miloslavc.com"
