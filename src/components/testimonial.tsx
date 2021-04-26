@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 // dependencies
 import styled from '@emotion/styled';
-import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 // assets
 import { H2, Text } from '../assets';
@@ -18,9 +18,7 @@ type Testimonial = {
           desc: string;
         };
         name: string;
-        image: {
-          fluid: any;
-        };
+        image: any;
       };
     }[];
   };
@@ -38,9 +36,8 @@ function Testimonial() {
             }
             name
             image {
-              fluid {
-                ...GatsbyContentfulFluid_withWebp
-              }
+              title
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }
@@ -57,7 +54,10 @@ function Testimonial() {
           <Text>{node.desc.desc}</Text>
           <InnerWrapper>
             <Image>
-              <Img fluid={node.image.fluid} />
+              <GatsbyImage
+                image={node?.image?.gatsbyImageData}
+                alt={node?.image?.title}
+              />
             </Image>
             <H2>{node.name}</H2>
           </InnerWrapper>

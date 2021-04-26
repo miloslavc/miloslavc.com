@@ -17,6 +17,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -41,19 +42,6 @@ module.exports = {
         spaceId: process.env.CONTENTFUL_SPACE_ID || '',
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
         host: process.env.CONTENTFUL_HOST || 'cdn.contentful.com',
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-sentry',
-      options: {
-        dsn: process.env.SENTRY_ACCESS_TOKEN,
-        // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
-        environment: process.env.NODE_ENV,
-        enabled: (() =>
-          ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
-        config: {
-          // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
-        },
       },
     },
     {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-import Img, { FluidObject } from 'gatsby-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 // dependencies
 import { graphql, Link } from 'gatsby';
@@ -34,9 +34,7 @@ const trans = (x: number, y: number, s: number): string =>
 type Project = {
   data: {
     contentfulProjects: {
-      hero: {
-        fluid: any;
-      };
+      hero: any;
       seo: {
         title: string;
       };
@@ -49,10 +47,7 @@ type Project = {
       live: string;
       gitHub: string;
       stack: { stack: string };
-      gallery: {
-        fluid: FluidObject | FluidObject[];
-        id: string;
-      }[];
+      gallery: any;
     };
   };
   pageContext: any;
@@ -61,6 +56,8 @@ type Project = {
 function ProjectLayout({ data, pageContext }: Project) {
   const { next, prev } = pageContext;
   const projectData = data.contentfulProjects;
+
+  console.log(data);
 
   // animation
   const [props, set] = useSpring(() => ({
@@ -80,15 +77,12 @@ function ProjectLayout({ data, pageContext }: Project) {
                 set({ xys: calc(x, y) })
               }
               onMouseLeave={() => set({ xys: [0, 0, 1] })}
-              // @ts-expect-error react-spring
-              style={{ transform: props.xys.interpolate(trans) }}
+              style={{ transform: props.xys.to(trans) }}
             >
               <ImageWrapper>
-                <Img
-                  fluid={projectData?.hero?.fluid}
-                  fadeIn={false}
-                  loading="eager"
-                  critical
+                <GatsbyImage
+                  image={projectData?.hero?.gatsbyImageData}
+                  alt={projectData?.hero?.title}
                 />
               </ImageWrapper>
             </animated.div>
@@ -129,9 +123,19 @@ function ProjectLayout({ data, pageContext }: Project) {
           </ExternalNav>
         </ProjectWrapper>
         <ProjectGallery>
-          {projectData?.gallery?.map((item) => (
-            <Img key={item.id} fluid={item?.fluid} />
-          ))}
+          {projectData?.gallery?.map(
+            (item: {
+              gatsbyImageData: IGatsbyImageData;
+              id: React.Key | null | undefined;
+              title: string;
+            }) => (
+              <GatsbyImage
+                image={item?.gatsbyImageData}
+                key={item.id}
+                alt={item?.title}
+              />
+            ),
+          )}
         </ProjectGallery>
         <Nav>
           <Link className={prev ? 'active' : 'hidden'} to={`/projects/${prev}`}>
@@ -162,15 +166,13 @@ export const query = graphql`
       year
       work
       gallery {
-        fluid(maxWidth: 1440, quality: 85) {
-          ...GatsbyContentfulFluid_withWebp
-        }
+        title
+        gatsbyImageData(layout: FULL_WIDTH, formats: [AUTO, WEBP])
         id
       }
       hero {
-        fluid(maxWidth: 1920, quality: 85) {
-          ...GatsbyContentfulFluid_withWebp
-        }
+        title
+        gatsbyImageData(layout: FULL_WIDTH, quality: 100, formats: [AUTO, WEBP])
       }
       seo {
         title

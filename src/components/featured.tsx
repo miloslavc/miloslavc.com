@@ -4,7 +4,7 @@ import { isMobile } from 'react-device-detect';
 
 // dependencies
 import styled from '@emotion/styled';
-import Img, { FluidObject } from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 // assets
 import { H4, H2, Text } from '../assets';
@@ -19,9 +19,7 @@ type Projects = {
         category: string;
         work: string;
         title: string;
-        image: {
-          fluid: FluidObject | FluidObject[];
-        };
+        image: any;
       };
     }[];
   };
@@ -41,9 +39,8 @@ const Featured = () => {
             work
             title
             image {
-              fluid(maxWidth: 1280) {
-                ...GatsbyContentfulFluid_withWebp
-              }
+              title
+              gatsbyImageData(layout: FULL_WIDTH)
             }
           }
         }
@@ -60,6 +57,8 @@ const Featured = () => {
   };
 
   const featuredProjects = featured.edges;
+  console.log(featuredProjects);
+
   return (
     <Wrapper>
       <H4>Recent Works</H4>
@@ -76,10 +75,10 @@ const Featured = () => {
             >
               <Image scale={dataId === node.id ? 1.03 : 1}>
                 {node?.image && (
-                  <Img
-                    fadeIn={false}
-                    fluid={node?.image?.fluid}
-                    loading="auto"
+                  <GatsbyImage
+                    image={node?.image?.gatsbyImageData}
+                    alt={node?.image?.title}
+                    key={node?.id}
                   />
                 )}
               </Image>
