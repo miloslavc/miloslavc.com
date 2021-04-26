@@ -57,7 +57,6 @@ const Featured = () => {
   };
 
   const featuredProjects = featured.edges;
-  console.log(featuredProjects);
 
   return (
     <Wrapper>
@@ -70,7 +69,7 @@ const Featured = () => {
             data-testid="featured"
           >
             <Card
-              onMouseEnter={() => handleEnter(node.id)}
+              onMouseOver={() => handleEnter(node.id)}
               onMouseLeave={handleLeave}
             >
               <Image scale={dataId === node.id ? 1.03 : 1}>

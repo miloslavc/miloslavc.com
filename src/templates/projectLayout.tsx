@@ -57,8 +57,6 @@ function ProjectLayout({ data, pageContext }: Project) {
   const { next, prev } = pageContext;
   const projectData = data.contentfulProjects;
 
-  console.log(data);
-
   // animation
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
