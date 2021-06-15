@@ -23,7 +23,6 @@ describe('miloslavc.com', () => {
       .then(($id) => {
         const projectUrl = $id.attr('href');
 
-        cy.findAllByTestId('featured').first().click();
         cy.url().should('include', projectUrl);
       });
 
