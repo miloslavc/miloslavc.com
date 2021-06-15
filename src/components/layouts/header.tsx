@@ -3,50 +3,27 @@ import * as React from 'react';
 import styled from '@emotion/styled';
 
 // assets
-import { FaGithub, FaLinkedinIn, FaDribbble } from 'react-icons/fa';
+import CV from '../../assets/CV_2021.pdf';
+
 import { primary, white, black, mq } from '../../utils';
+import { PrimaryIntButtonNav, PrimaryButtonNav } from '../../assets';
 
 const Header = () => (
   <HeaderStyled>
     <nav>
-      <Link className="logo" to="/">
+      <PrimaryIntButtonNav className="logo" to="/">
         m-c.
-      </Link>
-      <a
-        className="icons"
-        target="_blank"
-        href="https://dribbble.com/miloslavc"
-        rel="noopener noreferrer"
-      >
-        <FaDribbble />
-      </a>
-      <a
-        className="icons"
-        target="_blank"
-        href="https://github.com/miloslavc"
-        rel="noopener noreferrer"
-      >
-        <FaGithub />
-      </a>
-      <a
-        className="LinkedIn icons"
-        target="_blank"
-        href="https://www.linkedin.com/in/miloslavc/"
-        rel="noopener noreferrer"
-      >
-        <FaLinkedinIn />
-      </a>
-      <span className="icons"> - </span>
-      <Link className="about" to="/about">
-        About
-      </Link>
-      <a
-        className="CTA"
+      </PrimaryIntButtonNav>
+      <PrimaryIntButtonNav to="/about">About</PrimaryIntButtonNav>
+      <PrimaryButtonNav href={CV} download="Miloslav_Cvetkovic">
+        Resume
+      </PrimaryButtonNav>
+      <PrimaryButtonNav
         href="mailto:contact@miloslavc.com"
         rel="noopener noreferrer"
       >
         Contact
-      </a>
+      </PrimaryButtonNav>
     </nav>
   </HeaderStyled>
 );
@@ -70,29 +47,6 @@ const HeaderStyled = styled.header`
     font-weight: 700;
     color: ${primary};
   }
-  .LinkedIn {
-    margin-right: 0;
-  }
-  .CTA {
-    background: ${primary};
-    padding: 0.6rem 1.2rem;
-    border-radius: 50px;
-    color: ${white};
-    &:hover {
-      color: ${black};
-    }
-  }
-  .icons {
-    display: none;
-    ${mq[1]} {
-      display: inline-flex;
-    }
-  }
-  span {
-    padding: 0 1em;
-    font-size: 1.5em;
-    color: ${black};
-  }
   nav {
     display: flex;
     align-items: center;
@@ -109,14 +63,6 @@ const HeaderStyled = styled.header`
 
       &:last-of-type {
         margin-right: 0;
-      }
-      &:hover {
-        color: ${primary};
-      }
-      img {
-        max-width: 20px;
-        width: 100%;
-        height: 100%;
       }
     }
   }

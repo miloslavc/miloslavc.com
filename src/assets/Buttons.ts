@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { black, primary, white } from '../utils';
+import { Link } from 'gatsby'
 
 const button = css`
   color: ${black};
@@ -55,7 +56,15 @@ export const PrimaryButton = styled.button`
   text-transform: uppercase;
   margin-top: 2rem;
 `;
+
 export const PrimaryButtonNav = styled.a`
+  ${button}
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.25;
+`;
+
+export const PrimaryIntButtonNav = styled(Link)`
   ${button}
   font-size: 1.125rem;
   font-weight: 600;
