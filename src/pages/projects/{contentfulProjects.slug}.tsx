@@ -14,12 +14,12 @@ import {
   PrimaryButtonInt,
   TextPar,
   SecondaryButton,
-} from '../assets';
-import { mq, mqx, gray, black } from '../utils';
+} from '../../assets';
+import { mq, mqx, gray, black } from '../../utils';
 
 // gatsby assets
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Layout from '../../components/layout';
+import SEO from '../../components/seo';
 
 // animation
 const calc = (x: number, y: number) => [
@@ -38,6 +38,7 @@ type Project = {
       seo: {
         title: string;
       };
+      slug: string;
       title: string;
       desc: string;
       category: string;
@@ -49,13 +50,23 @@ type Project = {
       stack: { stack: string };
       gallery: any;
     };
+    allContentfulProjects: any;
   };
-  pageContext: any;
 };
 
-function ProjectLayout({ data, pageContext }: Project) {
-  const { next, prev } = pageContext;
+function ProjectLayout({ data }: Project) {
   const projectData = data.contentfulProjects;
+  const index = data.allContentfulProjects.edges.findIndex(
+    (item: any) => item.node.slug === data.contentfulProjects.slug,
+  );
+
+  const prev =
+    index === 0 ? null : data.allContentfulProjects.edges[index - 1].node.slug;
+
+  const next =
+    index === data.allContentfulProjects.edges.length - 1
+      ? null
+      : data.allContentfulProjects.edges[index + 1].node.slug;
 
   // animation
   const [props, set] = useSpring(() => ({
@@ -152,8 +163,9 @@ function ProjectLayout({ data, pageContext }: Project) {
 export default ProjectLayout;
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     contentfulProjects(slug: { eq: $slug }) {
+      slug
       category
       client
       desc
@@ -177,6 +189,13 @@ export const query = graphql`
       }
       stack {
         stack
+      }
+    }
+    allContentfulProjects(sort: { fields: title, order: ASC }) {
+      edges {
+        node {
+          slug
+        }
       }
     }
   }

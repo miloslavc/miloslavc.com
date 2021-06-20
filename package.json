@@ -61,15 +61,18 @@
     "cy:open": "cypress open",
     "dev:test": "start-server-and-test dev 8000 cy:open",
     "test": "cypress run --headless",
-    "precommit": "lint-staged",
     "type-check": "tsc --noEmit",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "cz"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }
