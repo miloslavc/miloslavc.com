@@ -7,15 +7,8 @@ import { graphql, Link } from 'gatsby';
 import { useSpring, animated } from 'react-spring';
 
 // assets
-import {
-  P,
-  H2,
-  H4,
-  PrimaryButtonInt,
-  TextPar,
-  SecondaryButton,
-} from '../../assets';
-import { mq, mqx, gray, black } from '../../utils';
+import { P, H4, PrimaryButtonInt } from '../../assets';
+import { mq, gray, black } from '../../utils';
 
 // gatsby assets
 import Layout from '../../components/layout';
@@ -98,8 +91,10 @@ function ProjectLayout({ data }: Project) {
           </Parallax>
         )}
         <ProjectWrapper>
-          <H2>{projectData?.title}</H2>
-          <TextPar color={gray}>{projectData?.desc}</TextPar>
+          <Header>
+            <Desc>{projectData?.desc}</Desc>
+            <Title>{projectData?.title}</Title>
+          </Header>
           <Details>
             <li>
               <H4>Category</H4>
@@ -117,19 +112,28 @@ function ProjectLayout({ data }: Project) {
               <H4>Client</H4>
               <P>{projectData?.client}</P>
             </li>
-            <li className="stack">
+            <li>
               <H4>Stack</H4>
               <P>{projectData?.stack?.stack}</P>
             </li>
+            {(projectData?.gitHub || projectData?.live) && (
+              <li>
+                <H4>Links</H4>
+                <ExternalNav>
+                  {projectData?.live && (
+                    <a href={projectData?.live} target="_blank">
+                      Live
+                    </a>
+                  )}
+                  {projectData?.gitHub && (
+                    <a href={projectData?.gitHub} target="_blank">
+                      GitHub
+                    </a>
+                  )}
+                </ExternalNav>
+              </li>
+            )}
           </Details>
-          <ExternalNav>
-            <SecondaryButton href={projectData?.live} target="_blank">
-              live
-            </SecondaryButton>
-            <SecondaryButton href={projectData?.gitHub} target="_blank">
-              git
-            </SecondaryButton>
-          </ExternalNav>
         </ProjectWrapper>
         <ProjectGallery>
           {projectData?.gallery?.map(
@@ -201,48 +205,47 @@ export const query = graphql`
   }
 `;
 
-const Wrapper = styled.section`
-  display: grid;
-  align-items: center;
-  grid-gap: 1em;
-  grid-auto-rows: auto;
-`;
+const Wrapper = styled.section``;
 
 const ProjectWrapper = styled.article`
   padding: 0 2rem 2rem;
-  text-align: center;
   display: grid;
   align-items: center;
   justify-items: center;
   grid-gap: 2rem;
   margin: 0 auto;
   max-width: 75em;
-  width: 100%;
-  ${mq[1]} {
-    padding: 3rem 2rem 2rem;
+  ${mq[2]} {
+    width: 100%;
+    padding: 0 2rem 2rem;
   }
 `;
 
 const Details = styled.ul`
   grid-column: 1/-1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   grid-gap: 1rem;
   width: 100%;
   margin: 0;
+  padding: 0;
   list-style: none;
-  text-align: center;
-  p {
-    font-size: 0.8rem;
+  p,
+  a {
+    font-size: 0.875rem;
+    margin: 0;
     margin-top: 0.5rem;
     color: ${gray};
+    font-weight: 400;
+    ${mq[1]} {
+      font-size: 1rem;
+    }
   }
   h4 {
+    font-size: 0.875rem;
     color: ${black};
-  }
-  li:last-of-type {
-    ${mqx[0]} {
-      grid-column: 1/-1;
+    margin: 0;
+    ${mq[1]} {
+      font-size: 1.125rem;
     }
   }
 `;
@@ -252,34 +255,34 @@ const ProjectGallery = styled.article`
   max-width: 75em;
   padding: 0.5rem 2rem;
   margin: 0 auto;
-  width: 100%;
   display: grid;
-  grid-gap: 1rem;
-  ${mq[1]} {
+  grid-gap: 1.5rem;
+  ${mq[2]} {
+    width: 100%;
     padding: 0 5rem 2rem;
     grid-gap: 2rem;
   }
 `;
 
 const Nav = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   align-items: center;
-  justify-items: center;
-  margin-bottom: 2rem;
+  justify-content: space-between;
+  margin: 2rem;
   .hidden {
     pointer-events: none;
     visibility: hidden;
   }
 `;
+
 const Parallax = styled.div`
   margin-top: 5vh;
-  max-height: 65vmin;
+  max-height: 55vmin;
   height: 100%;
   width: 100%;
   position: relative;
   overflow: hidden;
-  ${mq[1]} {
+  ${mq[2]} {
     max-height: 75vmin;
   }
 `;
@@ -293,11 +296,57 @@ const ImageWrapper = styled.div`
 `;
 
 const ExternalNav = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 3rem;
-  align-items: end;
-  a:last-of-type {
-    align-items: start;
+  a {
+    text-decoration: underline;
+    display: inline-block;
+    &:hover {
+      color: ${black};
+    }
+  }
+  a:first-of-type {
+    margin-right: 1rem;
+  }
+`;
+
+const Title = styled.h1`
+  font-size: 3.5rem;
+  transform: translateY(-35%);
+  margin: 0;
+  text-align: right;
+  font-weight: 700;
+  ${mq[1]} {
+    font-size: 4.5rem;
+  }
+  ${mq[2]} {
+    margin-left: 3rem;
+    font-size: 6.5rem;
+    transform: translateY(-25%);
+  }
+`;
+
+const Desc = styled.h4`
+  font-size: 1rem;
+  margin: 0;
+  font-weight: normal;
+  text-align: right;
+  color: ${gray};
+  order: 2;
+  ${mq[2]} {
+    text-align: left;
+    font-size: 1.125rem;
+    order: 1;
+  }
+`;
+
+const Header = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  ${mq[2]} {
+    align-items: center;
+    justify-content: space-between;
+    justify-content: space-between;
+    flex-direction: row;
   }
 `;

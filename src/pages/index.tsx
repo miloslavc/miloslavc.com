@@ -8,16 +8,14 @@ import SEO from '../components/seo';
 import Hero from '../components/hero';
 import Process from '../components/process';
 import Featured from '../components/featured';
-// import Testimonial from '../components/testimonial';
 
 function IndexPage() {
   return (
     <Layout>
       <SEO title="Home" />
       <Hero />
-      <Process />
       <Featured />
-      {/* <Testimonial /> */}
+      <Process />
     </Layout>
   );
 }

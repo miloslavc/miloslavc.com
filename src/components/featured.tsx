@@ -107,7 +107,7 @@ const Wrapper = styled.section`
     width: 100%;
   }
 
-  ${mq[1]} {
+  ${mq[2]} {
     padding: 2rem 2rem 3rem;
 
     a {
@@ -124,7 +124,7 @@ const CardWrapper = styled.div`
   justify-items: center;
   grid-gap: 2rem;
 
-  ${mq[1]} {
+  ${mq[2]} {
     grid-template-columns: 1fr 1fr;
     grid-gap: 5rem;
   }

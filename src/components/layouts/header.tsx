@@ -1,4 +1,3 @@
-import { Link } from 'gatsby';
 import * as React from 'react';
 import styled from '@emotion/styled';
 
@@ -15,7 +14,11 @@ const Header = () => (
         m-c.
       </PrimaryIntButtonNav>
       <PrimaryIntButtonNav to="/about">About</PrimaryIntButtonNav>
-      <PrimaryButtonNav href={CV} download="Miloslav_Cvetkovic">
+      <PrimaryButtonNav
+        className="resume"
+        href={CV}
+        download="Miloslav_Cvetkovic"
+      >
         Resume
       </PrimaryButtonNav>
       <PrimaryButtonNav
@@ -46,6 +49,12 @@ const HeaderStyled = styled.header`
     font-size: 1.25rem;
     font-weight: 700;
     color: ${primary};
+  }
+  .resume {
+    display: none;
+    ${mq[1]} {
+      display: block;
+    }
   }
   nav {
     display: flex;

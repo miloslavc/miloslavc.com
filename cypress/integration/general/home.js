@@ -13,7 +13,6 @@ describe('miloslavc.com', () => {
   it('Navigate to About Page', () => {
     cy.clickLink('About');
     cy.url().should('include', '/about');
-    cy.get('.btn').should('have.attr', 'href', 'mailto:contact@miloslavc.com');
   });
 
   it('Navigate to First Project', () => {
@@ -26,8 +25,8 @@ describe('miloslavc.com', () => {
         cy.url().should('include', projectUrl);
       });
 
-    cy.contains('live');
-    cy.contains('git');
+    cy.contains('Live');
+    cy.contains('GitHub');
   });
 
   it('Check for corrent number of projects', () => {

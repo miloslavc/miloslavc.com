@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { black, primary, white } from '../utils';
-import { Link } from 'gatsby'
+import { Link } from 'gatsby';
 
 const button = css`
   color: ${black};

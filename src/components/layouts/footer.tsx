@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 // assets
 import { FaGithub, FaLinkedinIn, FaDribbble } from 'react-icons/fa';
 import { white, black, gray, primary } from '../../utils';
-import { FooterIcon, H4, Text, HeroHeading, P } from '../../assets';
+import { FooterIcon, H4, HeroHeading, P } from '../../assets';
 
 function Footer() {
   return (
@@ -12,11 +12,6 @@ function Footer() {
       <Content>
         <H4>Get in touch</H4>
         <HeroHeading>Let’s work together</HeroHeading>
-        <Text>
-          If you have a website or web app idea in mind, feel free to contact
-          me. I promise that I will reply as soon as possible, and schedule a
-          call or a meeting.
-        </Text>
         <a
           className="CTA"
           href="mailto:contact@miloslavc.com"
