@@ -24,14 +24,17 @@ export default Hero;
 
 const Wrapper = styled.section`
   max-width: 70rem;
-  padding: 5vh 2rem 2rem;
+  padding: 0 2rem;
   margin: 0 auto;
   min-height: 100vh;
   display: grid;
   align-items: center;
   justify-items: start;
   ${mq[1]} {
-    padding: 10vh 2rem 2rem;
+    min-height: 70vh;
+  }
+  ${mq[2]} {
+    min-height: 80vh;
   }
 `;
 
