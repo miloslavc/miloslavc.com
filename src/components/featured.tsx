@@ -97,9 +97,6 @@ export default Featured;
 
 const Wrapper = styled.section`
   min-height: 100vh;
-  max-width: 70rem;
-  margin: 0 auto;
-  padding: 2rem;
   h4 {
     margin-bottom: 2rem;
   }
@@ -108,7 +105,7 @@ const Wrapper = styled.section`
   }
 
   ${mq[2]} {
-    padding: 2rem 2rem 3rem;
+    /* padding: 2rem 2rem 3rem; */
 
     a {
       &:nth-of-type(2) {
@@ -117,6 +114,7 @@ const Wrapper = styled.section`
     }
   }
 `;
+
 const CardWrapper = styled.div`
   width: 100%;
   display: grid;

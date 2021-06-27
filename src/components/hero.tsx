@@ -23,9 +23,6 @@ function Hero() {
 export default Hero;
 
 const Wrapper = styled.section`
-  max-width: 70rem;
-  padding: 0 2rem;
-  margin: 0 auto;
   min-height: 100vh;
   display: grid;
   align-items: center;

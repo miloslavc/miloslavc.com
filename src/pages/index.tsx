@@ -8,14 +8,17 @@ import SEO from '../components/seo';
 import Hero from '../components/hero';
 import Process from '../components/process';
 import Featured from '../components/featured';
+import Container from '../components/global/Container';
 
 function IndexPage() {
   return (
     <Layout>
       <SEO title="Home" />
-      <Hero />
-      <Featured />
-      <Process />
+      <Container>
+        <Hero />
+        <Featured />
+        <Process />
+      </Container>
     </Layout>
   );
 }

@@ -8,6 +8,7 @@ import SEO from '../components/seo';
 // assets
 import { P, H4, Span } from '../assets/';
 import { primary, mq, black, gray } from '../utils';
+import Container from '../components/global/Container';
 
 export const pageQuery = graphql`
   query AboutQuery {
@@ -64,34 +65,36 @@ function About({ data }: Props) {
   return (
     <Layout>
       <SEO title="About me" />
-      <Wrapper>
-        <Heading>
-          <H4>
-            Hello
-            <span role="img" aria-label="Victory Hand">
-              ✌
-            </span>
-          </H4>
-          <h1>
-            My name is <Span color={primary}>{about?.title}. </Span>
-          </h1>
-          <h1>{about?.desc?.desc}</h1>
-        </Heading>
-        <Content>
-          <Experience>
-            <H4>Experience</H4>
-            {experience.edges.map(({ node }) => (
-              <div key={node.id}>
-                <P color={black}>{`${node?.duration} | ${node?.role}`}</P>
-                <P color={gray}>
-                  {`${node?.name}`}
-                  {node?.location && <span>{` - ${node.location}`}</span>}
-                </P>
-              </div>
-            ))}
-          </Experience>
-        </Content>
-      </Wrapper>
+      <Container>
+        <Wrapper>
+          <Heading>
+            <H4>
+              Hello
+              <span role="img" aria-label="Victory Hand">
+                ✌
+              </span>
+            </H4>
+            <h1>
+              My name is <Span color={primary}>{about?.title}. </Span>
+            </h1>
+            <h1>{about?.desc?.desc}</h1>
+          </Heading>
+          <Content>
+            <Experience>
+              <H4>Experience</H4>
+              {experience.edges.map(({ node }) => (
+                <div key={node.id}>
+                  <P color={black}>{`${node?.duration} | ${node?.role}`}</P>
+                  <P color={gray}>
+                    {`${node?.name}`}
+                    {node?.location && <span>{` - ${node.location}`}</span>}
+                  </P>
+                </div>
+              ))}
+            </Experience>
+          </Content>
+        </Wrapper>
+      </Container>
     </Layout>
   );
 }
@@ -99,20 +102,16 @@ function About({ data }: Props) {
 export default About;
 
 const Wrapper = styled.section`
-  max-width: 70rem;
-  margin: 0 auto;
   display: grid;
   justify-items: center;
   align-items: center;
   grid-gap: 2rem;
   grid-template-rows: 1fr auto;
-  padding: 4rem 2rem;
 
   ${mq[1]} {
     min-height: 75vh;
   }
   ${mq[2]} {
-    min-height: 95vh;
     grid-gap: 6rem;
   }
 `;

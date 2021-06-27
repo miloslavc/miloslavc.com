@@ -13,6 +13,7 @@ import { mq, gray, black } from '../../utils';
 // gatsby assets
 import Layout from '../../components/layout';
 import SEO from '../../components/seo';
+import Container from '../../components/global/Container';
 
 // animation
 const calc = (x: number, y: number) => [
@@ -70,7 +71,7 @@ function ProjectLayout({ data }: Project) {
   return (
     <Layout>
       <SEO title={` ${projectData?.seo?.title}`} />
-      <Wrapper>
+      <>
         {projectData?.hero && (
           <Parallax>
             <animated.div
@@ -90,76 +91,84 @@ function ProjectLayout({ data }: Project) {
             </animated.div>
           </Parallax>
         )}
-        <ProjectWrapper>
-          <Header>
-            <Desc>{projectData?.desc}</Desc>
-            <Title>{projectData?.title}</Title>
-          </Header>
-          <Details>
-            <li>
-              <H4>Category</H4>
-              <P>{projectData?.category}</P>
-            </li>
-            <li>
-              <H4>Year</H4>
-              <P>{projectData?.year}</P>
-            </li>
-            <li>
-              <H4>Work</H4>
-              <P>{projectData?.work}</P>
-            </li>
-            <li>
-              <H4>Client</H4>
-              <P>{projectData?.client}</P>
-            </li>
-            <li>
-              <H4>Stack</H4>
-              <P>{projectData?.stack?.stack}</P>
-            </li>
-            {(projectData?.gitHub || projectData?.live) && (
+        <Container>
+          <ProjectWrapper>
+            <Header>
+              <Desc>{projectData?.desc}</Desc>
+              <Title>{projectData?.title}</Title>
+            </Header>
+            <Details>
               <li>
-                <H4>Links</H4>
-                <ExternalNav>
-                  {projectData?.live && (
-                    <a href={projectData?.live} target="_blank">
-                      Live
-                    </a>
-                  )}
-                  {projectData?.gitHub && (
-                    <a href={projectData?.gitHub} target="_blank">
-                      GitHub
-                    </a>
-                  )}
-                </ExternalNav>
+                <H4>Category</H4>
+                <P>{projectData?.category}</P>
               </li>
+              <li>
+                <H4>Year</H4>
+                <P>{projectData?.year}</P>
+              </li>
+              <li>
+                <H4>Work</H4>
+                <P>{projectData?.work}</P>
+              </li>
+              <li>
+                <H4>Client</H4>
+                <P>{projectData?.client}</P>
+              </li>
+              <li>
+                <H4>Stack</H4>
+                <P>{projectData?.stack?.stack}</P>
+              </li>
+              {(projectData?.gitHub || projectData?.live) && (
+                <li>
+                  <H4>Links</H4>
+                  <ExternalNav>
+                    {projectData?.live && (
+                      <a href={projectData?.live} target="_blank">
+                        Live
+                      </a>
+                    )}
+                    {projectData?.gitHub && (
+                      <a href={projectData?.gitHub} target="_blank">
+                        GitHub
+                      </a>
+                    )}
+                  </ExternalNav>
+                </li>
+              )}
+            </Details>
+          </ProjectWrapper>
+          <ProjectGallery>
+            {projectData?.gallery?.map(
+              (item: {
+                gatsbyImageData: IGatsbyImageData;
+                id: React.Key | null | undefined;
+                title: string;
+              }) => (
+                <GatsbyImage
+                  image={item?.gatsbyImageData}
+                  key={item.id}
+                  alt={item?.title}
+                />
+              ),
             )}
-          </Details>
-        </ProjectWrapper>
-        <ProjectGallery>
-          {projectData?.gallery?.map(
-            (item: {
-              gatsbyImageData: IGatsbyImageData;
-              id: React.Key | null | undefined;
-              title: string;
-            }) => (
-              <GatsbyImage
-                image={item?.gatsbyImageData}
-                key={item.id}
-                alt={item?.title}
-              />
-            ),
-          )}
-        </ProjectGallery>
-        <Nav>
-          <Link className={prev ? 'active' : 'hidden'} to={`/projects/${prev}`}>
-            <PrimaryButtonInt>Previous Project</PrimaryButtonInt>
-          </Link>
+          </ProjectGallery>
+          <Nav>
+            <Link
+              className={prev ? 'active' : 'hidden'}
+              to={`/projects/${prev}`}
+            >
+              <PrimaryButtonInt>Previous Project</PrimaryButtonInt>
+            </Link>
 
-          <Link className={next ? 'active' : 'hidden'} to={`/projects/${next}`}>
-            <PrimaryButtonInt>Next Project</PrimaryButtonInt>
-          </Link>
-        </Nav>
-      </Wrapper>
+            <Link
+              className={next ? 'active' : 'hidden'}
+              to={`/projects/${next}`}
+            >
+              <PrimaryButtonInt>Next Project</PrimaryButtonInt>
+            </Link>
+          </Nav>
+        </Container>
+      </>
     </Layout>
   );
 }
@@ -205,20 +214,11 @@ export const query = graphql`
   }
 `;
 
-const Wrapper = styled.section``;
-
 const ProjectWrapper = styled.article`
-  padding: 0 2rem 2rem;
   display: grid;
   align-items: center;
   justify-items: center;
   grid-gap: 2rem;
-  margin: 0 auto;
-  max-width: 75em;
-  ${mq[2]} {
-    width: 100%;
-    padding: 0 2rem 2rem;
-  }
 `;
 
 const Details = styled.ul`
@@ -252,14 +252,11 @@ const Details = styled.ul`
 
 const ProjectGallery = styled.article`
   text-align: center;
-  max-width: 75em;
-  padding: 0.5rem 2rem;
-  margin: 0 auto;
+  margin: 2rem auto;
   display: grid;
   grid-gap: 1.5rem;
   ${mq[2]} {
     width: 100%;
-    padding: 0 5rem 2rem;
     grid-gap: 2rem;
   }
 `;
@@ -268,7 +265,6 @@ const Nav = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 2rem;
   .hidden {
     pointer-events: none;
     visibility: hidden;
@@ -283,7 +279,10 @@ const Parallax = styled.div`
   position: relative;
   overflow: hidden;
   ${mq[2]} {
-    max-height: 75vmin;
+    max-height: 55vmin;
+  }
+  ${mq[3]} {
+    max-height: 55vmin;
   }
 `;
 
@@ -314,10 +313,12 @@ const Title = styled.h1`
   margin: 0;
   text-align: right;
   font-weight: 700;
+  order: -1;
   ${mq[1]} {
     font-size: 4.5rem;
   }
   ${mq[2]} {
+    order: 2;
     margin-left: 3rem;
     font-size: 6.5rem;
     transform: translateY(-25%);
@@ -330,11 +331,9 @@ const Desc = styled.h4`
   font-weight: normal;
   text-align: right;
   color: ${gray};
-  order: 2;
   ${mq[2]} {
     text-align: left;
     font-size: 1.125rem;
-    order: 1;
   }
 `;
 
